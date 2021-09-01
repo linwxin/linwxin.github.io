@@ -7,18 +7,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.xhyeax.com">
-  <title>Xhy&#39;s Blog</title>
+  <title>2019吾爱破解论坛春节红包四题Writeup | Xhy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Blog of XhyEax, Share and make progress together.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Xhy&#39;s Blog">
-<meta property="og:url" content="http://blog.xhyeax.com/index.html">
+  <meta name="description" content="解题方法并不唯一，仅供参考。 题目打包下载地址https:&#x2F;&#x2F;down.52pojie.cn&#x2F;Challenge&#x2F;Happy_New_Year_2019_Challenge.rar 第一题 签到题关注“吾爱破解论坛”公众号，回复指定字符串即可获得本题正确口令和第二题题目下载地址。 第二题 CrackMe（本题我做的时候是无壳的，因为碰巧发现了内测时的题。公测时加了个upx的壳，故需要先脱壳，esp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019吾爱破解论坛春节红包四题Writeup">
+<meta property="og:url" content="http://blog.xhyeax.com/2019/02/19/52pojie-2019-red-packet/index.html">
 <meta property="og:site_name" content="Xhy&#39;s Blog">
-<meta property="og:description" content="Blog of XhyEax, Share and make progress together.">
+<meta property="og:description" content="解题方法并不唯一，仅供参考。 题目打包下载地址https:&#x2F;&#x2F;down.52pojie.cn&#x2F;Challenge&#x2F;Happy_New_Year_2019_Challenge.rar 第一题 签到题关注“吾爱破解论坛”公众号，回复指定字符串即可获得本题正确口令和第二题题目下载地址。 第二题 CrackMe（本题我做的时候是无壳的，因为碰巧发现了内测时的题。公测时加了个upx的壳，故需要先脱壳，esp">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-1.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-2.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-3.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-4.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-5.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-6.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-7.png">
+<meta property="article:published_time" content="2019-02-19T08:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-01T03:47:13.843Z">
 <meta property="article:author" content="Xhy">
-<meta property="article:tag" content="XhyEax&#39;s Blog">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-1.png">
   
     <link rel="alternative" href="/atom.xml" title="Xhy&#39;s Blog" type="application/atom+xml">
   
@@ -164,23 +174,21 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-gradle-module-build-order-error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-52pojie-2019-red-packet" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/01/gradle-module-build-order-error/">Gradle app模块构建顺序不符合预期</a>
+    <h1 class="article-title" itemprop="name">
+      2019吾爱破解论坛春节红包四题Writeup
     </h1>
   
 
 
         
-        <a href="/2021/09/01/gradle-module-build-order-error/" class="archive-article-date">
-  	<time datetime="2021-08-31T17:40:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-01</time>
+        <a href="/2019/02/19/52pojie-2019-red-packet/" class="archive-article-date">
+  	<time datetime="2019-02-19T08:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-19</time>
 </a>
         
       </header>
@@ -188,31 +196,62 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 
       
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p>使用<code>Gradle</code>构建安卓项目，第一次构建时报错：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Task :app:buildCMakeDebug FAILED</span><br><span class="line">C/C++: ninja: error: missing and no known rule to make it</span><br></pre></td></tr></table></figure>
+    <p>解题方法并不唯一，仅供参考。</p>
+<h2 id="题目打包下载地址"><a href="#题目打包下载地址" class="headerlink" title="题目打包下载地址"></a>题目打包下载地址</h2><p><a target="_blank" rel="noopener" href="https://down.52pojie.cn/Challenge/Happy_New_Year_2019_Challenge.rar">https://down.52pojie.cn/Challenge/Happy_New_Year_2019_Challenge.rar</a></p>
+<h2 id="第一题-签到题"><a href="#第一题-签到题" class="headerlink" title="第一题 签到题"></a>第一题 签到题</h2><p>关注“吾爱破解论坛”公众号，回复指定字符串即可获得本题正确口令和第二题题目下载地址。</p>
+<h2 id="第二题-CrackMe"><a href="#第二题-CrackMe" class="headerlink" title="第二题 CrackMe"></a>第二题 CrackMe</h2><p>（本题我做的时候是无壳的，因为碰巧发现了内测时的题。公测时加了个upx的壳，故需要先脱壳，esp定律即可）<br>（这题用OD其实更方便些，个人习惯用IDA）<br>脱壳后IDA打开，<code>Shift+F12</code>查看字符串，找到关键字符串<code>正确!!!回复你输入的内容到吾爱破解论坛公众号</code><br>按X查看引用，定位到判断代码<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-1.png"><br>按F5查看伪代码<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-2.png"><br>上面有个长度判断，输入字符串长度为16<br>然后下面有个strcmp判断，相等则返回0，不过加了个<code>!</code>就变成相等返回真了</p>
+<p>所以在strcmp下个断点查看寄存器(v2)即可得到密码<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-3.png"></p>
+<h2 id="第三题-逆向题"><a href="#第三题-逆向题" class="headerlink" title="第三题 逆向题"></a>第三题 逆向题</h2><p>IDA打开，搜索<code>main</code>，找到程序主入口，定位到关键代码（前面还有个sha1算法的，应该和AES的key有关）<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-4.png"><br>逻辑是base64解码，然后再用aes解密，跟<code>HappyNewYearFrom52PoJie.Cn</code>比对，相同则通过校验<br>而aes的key应该跟输入的uid有关，虽然不知道他怎么生成，但是可以在使用它的时候断下，直接提取<br>所以点开<code>main_AesDecrypt</code>，给NewCipher下断点（查看go语言源码可知，传入参数的是key）<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-5.png"><br>在IDA中运行程序，输入uid，然后口令输入一个<code>base64Encode</code>过的字符串（比如<code>MQ==</code>），通过第一个解码校验<br>然后会在解码时断下，查看传入的第一个参数（其实是key的指针）<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-6.png"><br>在Hex View中按G定位，输入<code>12858120</code>，找到对应的值，提取之（key是十六位的，所以提取前十六位即可）<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/52pojie-2019-7.png"><br>得到<code>EF2D8BFA0C30AB270B92CC73A563AFA3</code><br>其实这一串数据就是我的uid对应的sha1散列值(<code>ef2d8bfa0c30ab270b92cc73a563afa3b04faa75</code>)的字节数组形式，取前16位<br>AES加密方式为CBC（<code>main_AesDecrypt</code>函数中可以直接看出），补码方式为<code>PKCS5Padding</code>（AES解密错误时，会退出程序，但是有异常信息一闪而过，给报错函数下断点即可查看异常信息）<br>所以把<code>EF2D8BFA0C30AB270B92CC73A563AFA3</code>转化成字节数组，使用<code>AES/CBC/PKCS5Padding</code>方式，<br>加密<code>HappyNewYearFrom52PoJie.Cn</code>，再进行<code>base64Encode</code>就可以得到口令了<br>（至此，程序逻辑完全清晰了）</p>
+<h3 id="go语言代码"><a href="#go语言代码" class="headerlink" title="go语言代码"></a>go语言代码</h3><p>之前为了验证golang生成的exe程序结构，从网上抄了个aes加解密的go语言的代码，改一改正好用的上（现学现用）</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;bytes&quot;</span></span><br><span class="line">    <span class="string">&quot;crypto/cipher&quot;</span></span><br><span class="line">    <span class="string">&quot;crypto/sha1&quot;</span></span><br><span class="line">    <span class="string">&quot;crypto/aes&quot;</span></span><br><span class="line">    <span class="string">&quot;encoding/base64&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">PKCS5Padding</span><span class="params">(ciphertext []<span class="keyword">byte</span>, blockSize <span class="keyword">int</span>)</span> []<span class="title">byte</span></span> &#123;</span><br><span class="line">    padding := blockSize - <span class="built_in">len</span>(ciphertext)%blockSize</span><br><span class="line">    padtext := bytes.Repeat([]<span class="keyword">byte</span>&#123;<span class="keyword">byte</span>(padding)&#125;, padding)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">append</span>(ciphertext, padtext...)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">PKCS5UnPadding</span><span class="params">(origData []<span class="keyword">byte</span>)</span> []<span class="title">byte</span></span> &#123;</span><br><span class="line">    length := <span class="built_in">len</span>(origData)</span><br><span class="line">    unpadding := <span class="keyword">int</span>(origData[length<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">return</span> origData[:(length - unpadding)]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">AesEncrypt</span><span class="params">(origData, key []<span class="keyword">byte</span>)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span> &#123;</span><br><span class="line">    block, err := aes.NewCipher(key)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">    blockSize := block.BlockSize()</span><br><span class="line">    origData = PKCS5Padding(origData, blockSize)</span><br><span class="line">    blockMode := cipher.NewCBCEncrypter(block, key[:blockSize])</span><br><span class="line">    crypted := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="built_in">len</span>(origData))</span><br><span class="line">    blockMode.CryptBlocks(crypted, origData)</span><br><span class="line">    <span class="keyword">return</span> crypted, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">AesDecrypt</span><span class="params">(crypted, key []<span class="keyword">byte</span>)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span> &#123;</span><br><span class="line">    block, err := aes.NewCipher(key)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">    blockSize := block.BlockSize()</span><br><span class="line">    blockMode := cipher.NewCBCDecrypter(block, key[:blockSize])</span><br><span class="line">    origData := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="built_in">len</span>(crypted))</span><br><span class="line">    blockMode.CryptBlocks(origData, crypted)</span><br><span class="line">    origData = PKCS5UnPadding(origData)</span><br><span class="line">    <span class="keyword">return</span> origData, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    uid := <span class="string">&quot;351649&quot;</span></span><br><span class="line">    h := sha1.New()</span><br><span class="line">    h.Write([]<span class="keyword">byte</span>(uid))</span><br><span class="line">    bs := h.Sum(<span class="literal">nil</span>)</span><br><span class="line">    <span class="keyword">var</span> aeskey = bs[<span class="number">0</span>:<span class="number">16</span>]</span><br><span class="line">    pass := []<span class="keyword">byte</span>(<span class="string">&quot;HappyNewYearFrom52PoJie.Cn&quot;</span>)</span><br><span class="line">    xpass, err := AesEncrypt(pass, aeskey)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    pass64 := base64.StdEncoding.EncodeToString(xpass)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;加密后:%v\n&quot;</span>,pass64)</span><br><span class="line">    bytesPass, err := base64.StdEncoding.DecodeString(pass64)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    tpass, err := AesDecrypt(bytesPass, aeskey)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;解密后:%s\n&quot;</span>, tpass)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第四题-RCNB"><a href="#第四题-RCNB" class="headerlink" title="第四题 RCNB"></a>第四题 RCNB</h2><p>解压得到<code>RCNB.md</code>，内容如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># ȐĆŅƃȓƇńƃȒċƝÞɌÇńßɌĉŇƅŕƇŃbȒȼȵßȒĆȵƁȓĉnƁɌćǸß</span><br><span class="line"></span><br><span class="line">ƦćƝƁȓĉnƅȓčƞÞɌćÑbȒČŃbȒċÑbŕƇŃþȒČNƃȒĈÑƄȓĊÑƄŕƇņÞȓčƞÞɌćÑbȒċƝÞŘcǸÞȐĆŅBƦĊȵþřÇȵƅȐċŇbɌcńþȓČŇƁŕƇNƀȒČŃBɌćÑBɌċnƄȓĈƝbŗƇƞÞŗčnBŕƇnþȒȻŃBȓĉnƅȒČNƅȒƈŇþŕčȠßŕƇŃƃřčȠbřċȵƀ</span><br><span class="line"></span><br><span class="line">ȐčNƄŕƇņƃɌcŅƄɌċnþŕƇŇƁȓƇńƁŕƇńþɌcńƄŕƇńþɌCňƀƦȻƝƃŕƇńþɌCňƀȐĉņþŗcŅƅȒĈÑƄȓĊǸƅȓĈȵþɌćƞßŕƇņÞȒȻŃþɌCňƀɌćǸbȒȼǹßȓĈƝB</span><br><span class="line"></span><br><span class="line">[ƦĉņƃŖċŅþŕƇŅƀȒCŅƀȒƈŇþɌcŅƄɌĉŇßŕƇņÞȓčƞÞȒƈňþŕƇńþȓĉnþȓČŇBŗcŅƅɌćƞƁȓćŅƁŕƇņÞȒȻŃþɌCňƁ](//rcnb.xyz)</span><br><span class="line"></span><br><span class="line">řĊÑbȒĉȠƀɌćÑbȒċƝÞȓćŅƁɌƈȠƃŕƇŃþȒȻŃþȒĈƞÞȑÇǹƄɌCȠƄƦȻŇƅɌćƞBȐčnÞŗÇÑBřĊÑbɌĆnþŗÇǹb</span><br><span class="line"></span><br><span class="line">ȐȼŃßɌćÑbŕƇņÞȒȻŃƄŕƇņÞɌcńþȒCŅbŕȻ</span><br><span class="line"></span><br><span class="line">ŘĈÑƀƝƄŘȻŖĊǸƀrcnƃňßɍĉƞƀRČņbRÇrcnbrcnbrcnbŖĊƝƃrcnbrcnbrcnbrČNþȓĉƞƁnƅŔƇńÞrćǹƁȓĆÑƅŔȼŕÇƞƅƞßȐCŅƁȐƇŖĆňƁɌƇȵƃȑĈȠƃNƃƦčƝƄȓĉŕČňƃŇbȐĆȑćnƅŘȼȵßƞßRĆǸƄɌCƞBȑĊŅÞŗĊɌȼŃßŇƁŔcŔƈǹÞȠƁɌĆńƅɍĉƝÞŖÇɌcŇƅŖĆnþńƁȓČňƄŘȻȓȻnƃǸƁɌCȒćȵƁȵƄɌCŅƅȐčŃƀřCřƇŇƁǸþřÇƞbƦČnbRCƝßȐćǹƁŔȻřȻņBǹBȑċŗÇƞƃȠBɌĆÑƃŕčņƃȓƇńbŖčÑbɌĊŗƈÑBRcƞƁȑƇńÞƦČǹƀǸƀŘcŘȻnƅRCņƃŅƄȐĉNÞŘĈÑƄŕčȐćǹbŇÞȓćǹßɌĈŔȻňƀƝbȐÇrCǹÞȓȻŃBńƄɍċńbɌČŗƇnƅȵƀŗċņßRCŇbřČřćÑƀȐĊŃbǸƅɍcȑCȵbǸßȑƇȑCǹƅŘȻŃƃřċŃþnƄRċǹBrƇńƃŖĈȑĉņbƞƅƦĆrCƝÞƦĆÑBņƄrćȑƇÑƅńƄƦƇŗĆnƀŔĆȠƄȐćNƀÑƅƦȼȓĉŇƄȵßȑCǹƄȐȼŗćȠƃŅBȓCȠƁŔċƝßřcŘčŅbƦĊƝƃɌċƞƀnƁŘȻÑbŖčŗCnþȒȻÑƅNþřȼrƈNƁŕĆƝBȐÇňƅȐCŃßŅƄrćƞƀȓĊńƃŖƇǸƁřċŘćŃƁŘȼÑƅȑċȵƀŃþrƇŃßŕĉrćNþȒȻƝƁɌƈȠbƦĊNƅŔCƝßȓČńÞƦċŇbŖƈņƃŖĉȵþnƃɍĉɌƈňÞřčǹBȠbŕĉřċńþņƄȑÇƞƁȒcŘĉǸƅňƃȒcŔĈńßǹƁƦćȓȼǹƁÑƁƦCȑċŇƄȓƈnƄȵƄrcŘčnƃȵßRčȑcNƁrĊNƅȐÇŇƁņƁȒčnƀɌČňbɌĆrȼƞÞŇƃɌCřÇnþňƅȒȼƝBȑcȐȻnBňƁȑċȓcȠbǹþȑƇǹƁrĈŖƈňƁŗcȵbňþřȼƦĈŃƅňßŗcŃƀƦĊŔcńÞŖĉȠƅŃƁȑĊȐÇȠþƞÞɌƇȵƅȐȼɍĉÑBrƇŇƅŔčƞßnƅŗĈɍĆȵƅŖČņbŖĆȠÞȒċÑƃŗċNƃŕȻŃÞNÞŔčŕĆƞƃNƃRČȐĆņƁŃƀřċŃbȓčƝƃȑcŔĆNþȑčȠbŗĆNþŇƁȓčrčŃƄȑĉnþŅþȓȻřcÑƄŖƇÑßȐĆńbŅbŕĊŃßŕČŇÞȒcÑƁȑĆŘÇńƃRƈǸƅŕcȠbņÞȑċRƈŇƀȐcňþńÞƦĈɍCȠƀÑBRĉǸƁŗȼȑƇnƁȵßŕƇŖċƞƅřƇǹþŇƄŖÇȠƃRĈǸƅŕƇņþŔĊřƈňbƝßrƈŕÇǸþŃÞȐĆnbȑĉȑȻǸƃǹƀRƇrƈNbnƄrċrĉŅBƦcňþRċňƁnBŗȼÑƁŕċƞßɍĈŗćņƀǹƁȑĈŅþŔƇňƅŗƇrĊǹƄǸßȒƈǹßŕȻȠBŔćƝþŔȻÑBȓĆǸÞȑċŕĉŃþŃƀŘcřȻÑBŅƀɌƈńƄŔĊÑÞƦĈƞƃȓȼņƁŘȻnƄŔćŖċǸƄŅBŖÇȓĉŅBňƄȐȼŖÇņbǹƅrȻÑÞŔČŅßŔĊNþɌƇȠÞRĉnþřčŕċNþȠþƦȼȠƅRĆÑƄŗćŘčŃƄŖÇÑƄǹbȑĆŖÇǹþƞƄȓcƞƁRCǸƄɍćȒČNƅȓȻňÞņBRĆƞbřƇŖcȠbřȻńƄŗĆŃÞŃBƦĉŗĊNþřĊņßȒĆȠƁȑĊŅBȐƈȵBǹƁřcrĉƞbnƀƦċŘȼÑƀȒÇńƁŗCȠƁƝßrĊǹþŗȻŃƀȒȻɍċNßŖĉǸßŃÞrƇȒȼȠƃřƇŃƃNbŘċƦČňƅŔČnBŗČƞbƞßŔȼŔĊȠƀnƅŖċŕčŇƄǹBŔCřċǹƅȐČňƀƝƀřĈŖČȵßńÞɌCǹƃŔćȓċÑþŕȼƝƄȒcńbǹbȓƈƝƅɌĆȠƄŖćǹBŖƈŘÇƝƅƦĉŃƁŃßŖĉNƃŔĉÑƄŖĈƞþȑČȑČnBŃƁŔČnƃȒĈȓĈNBǸßȐCȠßȐčŅbɍĉƞþƦĉrȻŅBŇßȒȻǸƁŘȼŘċńBňbŘčnƄŘÇȒƈŇƅǹÞřćȐćŅÞƦċŇƄŇbɌƇƦƇńƀňƁrČRČņbȑÇŅßȵƅřȼŖĆǸƀŔCƝƀņÞȓƇrĊŇþňbŕÇŃƄŔƈńÞŘČȐĊƝbřȻǹƃɌČȠBńƄȒƇNþřĊɌćņBŕȼȠƃŖƇňþÑßȓȼȑČÑƅnƄɍĉnÞŗcŘƈňßȓĉȵƄȑcNbȠßƦÇŅƃɍĈƦĊnƁŖÇŅBŔcŃƁńƁɌċňÞŕĉƦCņƅƦȻȵƅȓÇǹƃȓĆȠƃRȻňƃřćǸƀŗƈǹßřĉňbȐČńƁɍĈŇÞÑÞŘćŗÇNbŗȻÑÞRƈǸƃǹƀŕȻRĉƞBńþŘȻŔĆƝƁņBŕȻNBRĉņƃȓČƝƁȐċÑƀRČŕƈňƀrčŇƅȐĊŅÞƦȼǹƁňƃȓĊnþřĈŘCnþȠƀȒcƞƃɌćɌĊȵƅŕƇňƃnƄŔčńÞRČřȼńbŇßŕĊňþŘCǹbŔĈnbŕĊńþȑcŃƄŔĈŔčńbȐčȠBřĉŅƃņƃŘƈɌÇÑÞŇƄȓĉɍċňƅńþŗCřČƝƄRCņÞƝƁŔĈRȼNƅȒCnƃɌƇǹßńÞŕƈŇBŘCŕȼÑBȒÇŃÞǸƁȓȼŕČȠþȵƁȑƈńƀŔcȑƇÑßrƈǸÞrcŃÞŇƅȓćɌćńƀɍćňƀȠƅŘȼǸƁɍĊřčƞÞņƃrĊǸƀŗcȓƈńƀŇƀȐcrĊŅBȓĈȠƁɍćnƁnÞɌƇÑƃȐȼƞßŔCɍćƞbƝBȒcņƁrċnBŗƈȓȻńƃɌCÑBƞƀȒČňßŔƇřƇǹbŖcņƃŕĆňþŕČņƅȒĉŇƅȐĈŇƁȠƃRĉŔƇǸþŘĊȵßŔȼńbȑƈȠBǹBɌčȵƃrčǹƄŔȻƞƅŗȼȒĆƞƀŖĉȵbŕcƝÞȒȼńBrċǸƅŘcȠÞȐčƝbȓĊŅbŘCȠƀɍĆȠƅŕĉNƀȠÞŖćřċńƁńþȓĉȠƁƦȻnƀȓÇɍĈŅƅǸƀȓčȒȻņƀǹÞɍcȑĆȵƃrȻƝƀɌCŃþɍĈȵþŖČņßňƅŗĉÑÞŕƈȑcŃƁǸßȒƇȐÇƞßńbŕƈȵBŕƇnƄȓċȑȼȠBɍċŅÞŗċŅƃƦčńƄňÞRÇrcŅƄȐÇȠÞřčȠÞƞBɌȼɍĈŇþɍĉÑƅǸBrĆňƃŖȻŕčȵbņßŘĊƞƀȐƈnþŘčȓȻÑÞŕcńþņbŔȼɌČÑBɌčȵbȑĈŅBŕĉƞƄÑþȒÇȓȻNƀÑßŘĈÑƀȐȼƝBŔĈȵþɍĊÑßŕĉȒȼnþŕÇņbńþɍĆŅÞŗĊŃƃRċņƅŘcNþȑĆŅƁrƈǸƄȒCƝþŖȻrÇŇbřĊŅƅȑƈŃBƦċnßňƅƦĉÑþȓĈřȼŃƀɍcŃƄȵþɌCřĆNƄǹƄƦȻŔčŅƃnƅrċrCǸƄȓƈŃƀrÇnƁrCÑƅrCȵƀrƈǹßrƈȵƁRĆƞƁrÇŇÞȵßƦČȑȼǸƁǹBȑcɌƈƝÞȒĆŅÞrĆňƃRćŇƁȠƅȓcrc</span><br></pre></td></tr></table></figure>
 
-<p>
-        
+<p>有一个明显的网址<code>rcnb.xyz</code>，浏览器打开发现，所谓RC就是一个自定义的编码方式（因为开头有R结尾有C？），将内容解码得到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Prove your Niubility</span><br><span class="line"></span><br><span class="line">Hello there, Welcome to the 52PoJiE Spring Festival 2019 Challenge - RCNB.</span><br><span class="line"></span><br><span class="line">To prove you are as NB as RC, complete this trial!</span><br><span class="line"></span><br><span class="line">[It&#x27;s dangerous to go alone, take this!](//rcnb.xyz)</span><br><span class="line"></span><br><span class="line">And the key: Which_is_N0t_Th3_Answ3r</span><br><span class="line"></span><br><span class="line">With the trial:</span><br></pre></td></tr></table></figure>
 
-          <a class="article-more-a" href="/2021/09/01/gradle-module-build-order-error/#more">查看更多 >></a>
-        
-    
-    
+<p>后面的解出来是个7z的文件，但是由于转化成了字符串，所以很多字节丢失了，解码出来变成了问号。所以需要修改js代码，让它返回16进制字符串，方便直接转化成文件</p>
+<h3 id="修改js代码"><a href="#修改js代码" class="headerlink" title="修改js代码"></a>修改js代码</h3><p>定位到editor.js代码的rc2str函数，将它修改为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">rc2str</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (str === <span class="string">&#x27;&#x27;</span>) <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> res = rcnb.decode(str.trim())</span><br><span class="line">    <span class="keyword">return</span> Bytes2Str(res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Bytes2Str函数是直接网上找的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bytes2Str</span>(<span class="params">arr</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;arr.length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="keyword">var</span> tmp = arr[i].toString(<span class="number">16</span>);</span><br><span class="line">       <span class="keyword">if</span>(tmp.length == <span class="number">1</span>)</span><br><span class="line">       &#123;</span><br><span class="line">           tmp = <span class="string">&quot;0&quot;</span> + tmp;</span><br><span class="line">       &#125;</span><br><span class="line">       str += tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后就可以得到一串16进制字符串，转化为文件保存即可。<br>压缩包的密码就是之前得到的<code>Which_is_N0t_Th3_Answ3r</code><br>得到一个nb文件，直接记事本打开，得到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ȐȼŃƁȓĉnƅŕƇŅƀȓƇŃƅȒċƝþŕƇNƄɌćŃÞɌCȵBȒČNƄɌCňƀɌćÑbȒCŅÞŕƇŇƁȓƇńƁŕƇŅƅȒCņbȒċƝÞȒƈƝƀȒČnƁɌćŃÞȓƈȠƅȓƇNþɌcńBȓĊǸƁȒȼȵbȒƈnbɌCȵßȒȼȠÞȓĉNƁŗćƝƅRćŇbƞƅRȻÑßŘȻŇƁrĊńßŕčȠþRĉNƁƦĈņBƦcǹÞƦćŃbƦĈNƁƦĈȒćƝÞnƅŔĆņÞrȼȒćƝþǸßRĊńþrȻNþrČńßŕčǸÞRĊȵÞrȼȵbŕƇŇÞrĊnÞŔĆnBŘÇƝƃrĉǹþƦćņƅƦcȵƀƦćņBƦcǹÞƦćŃbƦĈNƁƦĈȒćƝÞnƃŔĆǸþRĊƝƃrĉňÞƦĉřƇƞþȵƅrȼņbrCnƃŔĆņßRćńßrȻńßŕčŃBRĊƞƅřȻƞƀřƇǹþƦćȵÞřƈƞþřȻŅþƦcǸƁřȻņƄƦcƞÞřȻŇbřƇǹÞƦćNþƦĈƞƄřȻņƀƦcǸƁřȻņƄƦcƞßřȻņƁƦcǹþƦćņƄƦcƞƄřȻņBƦcǹÞƦćŃbƦĈȵƀƦćȒćƝÞŃƄŔCƞÞřȻŅþƦcňÞƦĉřƇƞþȵƅrȼņbrCŃƄŔCƞßřȻŅÞƦcǹÞƦćȵƄřƈȵƀƦćŅÞƦcňÞƦĉȵƁřƈŅßřƇȒćƝþŃBRĊƞßřȻņƀƦcňÞƦĉȵƄřƈƞÞřȻņƀƦcǹÞƦćNþƦĈƞƅřȻņƀƦcňÞƦĉȵƄřƈƞþřȻŇbřƇǸƁřȻņƄƦcƞÞřȻŇbřƇǹÞƦćNþƦĈƞƄřȻņƀƦcǸƁřȻņƄƦcƞƄřȻȒćƝÞnƃŔĆǸþRĊŇƅrĊŃBrČŃƃŔċńþrȻŅbrċǹÞƦćȵÞřƈȓčnÞnƅrćǸƃŔćÑþŘȻȠBŘĊȵƅŕċRćņßƝƃŔƇȵƅrƇŅÞƦcǹÞƦćȵƁřƈȓčnƄNþřĆŃƃŔċÑƀrÇƞƀřƇǹþƦćņƄƦcƞƅřȻņƁƦcňÞƦĉņƄƦcňßƦcņƀƦcǸßřȻȵƃřƈňßƦcŇBřƇǸƄřȻņƄƦcȵƀƦćȒćƝÞǸbŔćňÞRČNƅŘCǹÞƦćŃbƦĈňÞƦcƞƀřƇǸƄřȻȒĉŅBǹÞrčȠbrčŅÞŔcÑƃRCȵbŕƇnƅrćŃƄŔCƞßřȻŅÞƦcňÞƦĉȵƁřƈƞƄřȻŇbřƇňÞƦĉȵƁřƈŅßřƇŇBřƇǸƁřȻņƄƦcƞßřȻƞƀřƇǹþƦćȵÞřƈÑbřȻřČȵßǸÞRĊǸþRĊǹÞrčȠbrčǸbŔćņþRćȠƃŘĊŃƄrČŃBRĊƞƅřȻņƀƦcǸƁřȻņƄƦcƞƅřȻƞƀřƇǹÞƦćȵƀřƈNƁƦĈƞƀřƇňÞƦĉȵƄřƈƞþřȻŇbřƇǸƁřȻņƄƦcƞƄřȻņBƦcǸßřȻȵþřƈȵƀƦćȒćƝƄȵƅŔȻNƅRĉǸƅŘCņbrCȠBŔĆŅßřƇřČȵƁȵƅŔȻńþrȻƝƃrĉǸƃřȻȵÞřƈNƁƦĈņBƦcňÞƦĉȵƁřƈŇbƦĆŅÞƦcǹþƦćņƅƦcȵƀƦćŇBřƇǸƅřȻȵþřƈƞßřȻņƀƦcǸƄřȻȵƄřƈȵƀƦćņƀƦcǹÞƦćŃbƦĈNƁƦĈņƁƦcǹÞƦćNþƦĈƞßřȻřČȵƅnƃŔĆƝƃrƈǹƀŕĉŇÞrĊnƃŔĆȵƁrȼņbŔcŃƃrČǸbŔćņßRćÑƀrƇǸßřȻņƄƦcƦȼŇƅnßrćǹbRĊŅbrȻǹÞŕĊňÞƦĉřƇÑbǸþŕĉńƅŕčƞƀRȻÑBRCƝBrƈŃbřĆŃÞŖĊnƀŘÇǹƀŕĉŇƄrĊƝƃŔƇȵƄrȼŃƀrČņBrCȠþRĉňßƦcřċÑƅRĆŇþŖƇŃÞǹƅƦćȒĉŅBȵƁrȼňßŕċȠßŔčƞßřȻņƁƦcǹÞƦćřƇƞþǹÞrčņbrCnƃŔĆÑƃRCȵbŕƇņbrCnÞŔĆnBŘÇŇƅrĊŃƄrČŃBRĊƞƅřȻņƀƦcǸƃřȻȵßřƈƞßřȻƞƀřƇǸƁřȻņƄƦcƞÞřȻŇbřƇǹÞƦćNþƦĈƞƄřȻņƀƦcǸƁřȻņƄƦcƞßřȻƞƀřƇǹÞƦćȵÞřƈƞƄřȻŇBřƇǸƅřȻȵþřƈƞƅřȻȒćƝƅŃÞŖĊnBŘÇŅbrȻȠBrčǸÞRĊǸßRĊŅßŔcŃƁřĆǹbRĊȵßrȼƞbŘČŇþrĊǸÞRĊÑBRCǹƄrčńƅŕčŃƄŔCƞßřȻņƁƦcǹÞƦćȵÞřƈȓČŃƅƝƅƦcNþƦĈňßƦcņBƦcǹßƦćńßřƇňßƦcņƀƦcǸƅřȻřčȠbŅþƦcǹƅƦćȵƄřƈƞÞřȻƞƀřƇ</span><br></pre></td></tr></table></figure>
+<p>拿去网站解码（不需要16进制了，所以用原本的js即可）<br>得到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Well done! It seems that you have great programming skills.</span><br><span class="line"></span><br><span class="line">ȐȼŃßɌCȵƃȒȼȵbȒƈnbɌÇńßɌĈȠƃȒȻŃBȓƈȠƃȒȼȵbȒČŃBɌCňƀȒĊŇßɌcńþȓČŇƁŕƇņÞȒȻŃƄŕƇŅƅȓƇŃƃȒȼȠbȒCņƁɌCňƀȒCŅƀȒĉȠƀɌćÑbɌcŅƄɌĉņƄȒȻńƄɌĉŇÞŕƇņÞȒȻŃƄŕƇŃbȒČŃƄŕƇńBȒČnƁȓȼǸß</span><br><span class="line"></span><br><span class="line">ŗĆnƀȒćnþŕƇnþȓƇńƅɌƇƝƄřĈƝßŗƇȠbȓčȵbȒȼƞþŗcŅƅȑĉȠƁȒCŅƀɌćŃÞɌćÑßŕƇŅþȓČňBɌČŅƅȓĊǸƄɌcńƄŕƇńþȒĆȵþɌĉŇÞŕƇŃƃřčȠbřċȵƀȓCÑBřćŃBŖČȵƃɌćǸƀȓƈȠßŘčŅƄŗĉȠƄȒȼȵƅȒȻŅBȒĆƝƃȒĈÑƄȓĊņBřƇNƁɌƇƞbɌCƝßȐĉņþƦȻƝƃŗĈńƀɌCƝB</span><br><span class="line"></span><br><span class="line">;) ȐcňÞŗcŅƅȒCŅƀȒĉȠƀȒȻŃƄɌcńƄŖċŅþŕƇņÞȒȻŃƄŕƇŅþȒČŃßŘčńbƦȻŇƅɌČÑþɌƈǹƃɌĉŅßȒCŅƅȒČnBƦȻƝƃȑÇƝƄŘCNƁȐĉņþ</span><br></pre></td></tr></table></figure>
 
+<p>继续解码就可以得到key了</p>
+<h2 id="—-简单的分割线—"><a href="#—-简单的分割线—" class="headerlink" title="—-简单的分割线—-"></a>—-简单的分割线—-</h2><p>迟来的<del>新年</del>元宵快乐！</p>
+<p>PS: 活动规则所限，活动结束之后才能发布解题方法</p>
+
+
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"></i>感谢支持</i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -223,7 +262,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
         		</li>
       		
 		</ul>
@@ -232,16 +271,84 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/01/gradle-module-build-order-error/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.xhyeax.com/2019/02/19/52pojie-2019-red-packet/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/02/28/android-reverse-fix-arsc/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          修复反编译资源文件报错问题(resource spec)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/16/ubuntu-install/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Ubuntu18.04安装记录(与Win10双系统共存)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -256,890 +363,32 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-android-arm-plt-hook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/30/android-arm-plt-hook/">简易Android ARM&amp;ARM64 GOT Hook (二)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/30/android-arm-plt-hook/" class="archive-article-date">
-  	<time datetime="2021-08-30T02:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前文<a href="https://blog.xhyeax.com/2021/08/23/android-arm-got-hook/">简易Android ARM&amp;ARM64 GOT Hook (一)</a>，基于链接视图，解析section查找GOT表偏移值，无法应对section被处理过的情况（如加固）。</p>
-<p>本文基于ELF的执行视图(<code>Execution View</code>)，讨论<code>Android</code> <code>ARM&amp;ARM64</code>架构的<code>GOT/PLT Hook</code>（仍以Hook公共库<code>libc.so</code>的<code>getpid</code>函数为例）。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/30/android-arm-plt-hook/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/30/android-arm-plt-hook/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%89%93%E5%8C%85%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80"><span class="toc-number">1.</span> <span class="toc-text">题目打包下载地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98-%E7%AD%BE%E5%88%B0%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">第一题 签到题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98-CrackMe"><span class="toc-number">3.</span> <span class="toc-text">第二题 CrackMe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98-%E9%80%86%E5%90%91%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">第三题 逆向题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#go%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81"><span class="toc-number">4.1.</span> <span class="toc-text">go语言代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%A2%98-RCNB"><span class="toc-number">5.</span> <span class="toc-text">第四题 RCNB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9js%E4%BB%A3%E7%A0%81"><span class="toc-number">5.1.</span> <span class="toc-text">修改js代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%94-%E7%AE%80%E5%8D%95%E7%9A%84%E5%88%86%E5%89%B2%E7%BA%BF%E2%80%94"><span class="toc-number">6.</span> <span class="toc-text">—-简单的分割线—-</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-why-linux-rm-dirfile-need-x" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/25/why-linux-rm-dirfile-need-x/">为什么Linux删除文件需要文件夹的可执行权限</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/25/why-linux-rm-dirfile-need-x/" class="archive-article-date">
-  	<time datetime="2021-08-25T03:01:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在Linux系统中，需要对文件所在目录有读写权限和可执行权限，才可以删除文件。读写权限很好理解，因为需要读取和修改文件夹内容信息。而可执行权限感觉有点奇怪，谷歌+分析内核源码，得到答案。</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>注意：需要使用普通用户进行以下操作</p>
-<p>首先使用<code>mkdir</code>创建一个目录，查看其权限，为<code>drwxr-xr-x</code>(755)<br>然后在该目录下创建文件，查看权限为<code>-rw-r--r--</code>(644)<br>可以看到文件夹和文件的默认权限是不同的，文件夹具有可执行权限</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/25/why-linux-rm-dirfile-need-x/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/25/why-linux-rm-dirfile-need-x/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ndk-warning-dt-flags" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/24/ndk-warning-dt-flags/">解决WARNING linker unsupported flags DT_FLAGS_1</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/24/ndk-warning-dt-flags/" class="archive-article-date">
-  	<time datetime="2021-08-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>使用最新版本的NDK编译<code>victim</code>，执行时提示<code>WARNING: linker: unsupported flags DT_FLAGS_1=0x8000001</code>(不影响运行)。</p>
-<h2 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h2><p>可使用<code>termux-elf-cleaner</code>替换<code>victim-patch-arm</code>的<code>DT_FLAGS_1</code>，从而去除<code>WARNING</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elf-cleaner.exe victim-patch-arm</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/24/ndk-warning-dt-flags/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/24/ndk-warning-dt-flags/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-android-arm-got-hook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/23/android-arm-got-hook/">简易Android ARM&amp;ARM64 GOT Hook (一)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/23/android-arm-got-hook/" class="archive-article-date">
-  	<time datetime="2021-08-23T02:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p><a href="https://blog.xhyeax.com/2021/08/30/android-arm-plt-hook/">简易Android ARM&amp;ARM64 GOT Hook (二)</a><br>基本思路为：基于执行视图，解析内存中的ELF，查找导入符号并替换函数地址</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本文以Hook公共库<code>libc.so</code>的<code>getpid</code>函数为例，基于ELF的链接视图(<code>Linking View</code>)，讨论<code>Android</code> <code>ARM&amp;ARM64</code>架构的<code>GOT/PLT Hook</code>。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>程序<code>加载</code>后，在执行之前，需要先进行<code>动态链接</code>，并进行<code>重定位</code>。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/23/android-arm-got-hook/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/23/android-arm-got-hook/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-arm-compile-without-as" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/22/arm-compile-without-as/">使用CMake交叉编译Android ARM程序</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/22/arm-compile-without-as/" class="archive-article-date">
-  	<time datetime="2021-08-22T07:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>脱离<code>Android Studio</code>，使用<code>CMake</code>交叉编译，生成<code>Android ARM</code>可执行文件及公共库。</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p><code>CMake 3.10.2</code>、<code>NDK 21.4.7075529</code>（从<code>Android Studio</code>的<code>SDK Manager</code>中下载）<br><code>ABI</code>:<code>armeabi-v7a</code></p>
-<h2 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h2><h3 id="可执行文件"><a href="#可执行文件" class="headerlink" title="可执行文件"></a>可执行文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.10.2)</span><br><span class="line"></span><br><span class="line">project(victim)</span><br><span class="line"></span><br><span class="line">add_executable(victim victim.cpp)</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/22/arm-compile-without-as/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/22/arm-compile-without-as/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-frida-no-root" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/06/frida-no-root/">Frida在无Root机器上的使用方案 (基于VirtualApp)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/06/frida-no-root/" class="archive-article-date">
-  	<time datetime="2021-08-06T06:03:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>大多数国产手机厂商出于安全考虑，禁止用户解锁BootLoader，因此也就无法通过Magisk获取Root权限。<br>本文基于<a target="_blank" rel="noopener" href="https://github.com/asLody/VirtualApp">VirtualApp框架</a>及<a target="_blank" rel="noopener" href="https://github.com/frida/frida">Frida-Gadget</a>，实现不修改apk使用Frida。</p>
-<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><h3 id="修改框架源码"><a href="#修改框架源码" class="headerlink" title="修改框架源码"></a>修改框架源码</h3><p>阅读<code>VirtualApp</code>源码可知，在<a target="_blank" rel="noopener" href="https://github.com/asLody/VirtualApp/blob/bd6f03cfd7cbf3ad63ec6198777a102c18112c2d/VirtualApp/lib/src/main/jni/Foundation/IOUniformer.cpp"><code>lib/src/main/jni/Foundation/IOUniformer.cpp</code></a>中hook了<code>dlopen</code>，并实现了<code>onSoLoaded</code>函数，可在该函数中通过传入的<code>filename</code>获取加载的动态库路径。</p>
-<p>由此，可以在<code>libart.so</code>加载后，手动调用<code>dlopen</code>加载<code>Frida-Gadget</code>（将arm版本的so文件及配置文件添加到<code>lib\src\main\jniLibs\armeabi-v7a</code>）。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/06/frida-no-root/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/06/frida-no-root/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-qq-8817-unrevoke-and-infinite-flashpic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/">QQ 8.8.17 防撤回、无限打开闪照</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/" class="archive-article-date">
-  	<time datetime="2021-08-04T00:33:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>之前写过一篇<a href="https://blog.xhyeax.com/2019/09/18/qq-813-unrevoke-module-develop/">QQ8.1.3防撤回原理</a>，每次更新后，都需要适配被混淆的类名。</p>
-<p>今天更新了最新版QQ（<code>8.8.17</code>），发现使用到的类名都未被混淆，不过包结构有了一定变化（可能是重构了？），需要重新适配。</p>
-<p>于是尝试使用<code>objection</code>分析撤回提示的实现，并编写<code>Xposed</code>模块。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-arm-thumb-pc-address" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/03/arm-thumb-pc-address/">ARM Thumb状态下 相对pc寄存器寻址问题</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/03/arm-thumb-pc-address/" class="archive-article-date">
-  	<time datetime="2021-08-02T19:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在一篇文章（<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1486586-1-1.html">实现简易安卓inlinehook</a>）中，Thumb状态下，相对寄存器pc寻址，结果不符合预期。谷歌后找到原因。</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/arm-address-not-4-byte.png"><br>问题指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B3AFB212 ldr r2,[pc,#2]            #预期R2=[pc+4+2=B3AFB218]，结果变为[B3AFB216]</span><br><span class="line">B3AFB216 mov r0, r0                #将pc赋值，替换为 mov r0, r0 方便测试</span><br><span class="line">B3AFB218 xx xx xx xx               #跳回地址，以78563412为例（小端模式）</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/03/arm-thumb-pc-address/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/03/arm-thumb-pc-address/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-draw-and-guess-save-history" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/01/draw-and-guess-save-history/">基于Mono注入 保存你画我猜历史房间数据</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/01/draw-and-guess-save-history/" class="archive-article-date">
-  	<time datetime="2021-07-31T20:06:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>最近在Steam购买了你画我猜(<code>Draw &amp; Guess</code>)，游戏并不支持保存最近房间代码，以及玩家id。<br>由于众所周知的服务器原因（土豆做的），经常有人掉线或闪退（也可能是自己），重连后无法返回之前的房间。</p>
-<p>于是考虑使用Mono注入技术，实现历史房间数据的保存。</p>
-<h2 id="逆向分析过程"><a href="#逆向分析过程" class="headerlink" title="逆向分析过程"></a>逆向分析过程</h2><h3 id="文件结构分析"><a href="#文件结构分析" class="headerlink" title="文件结构分析"></a>文件结构分析</h3><p>查看游戏目录结构，发现是使用Unity编写的Mono平台游戏，关键dll文件位于<code>..\steamapps\common\Draw &amp; Guess\Draw&amp;Guess_Data\Managed</code>，并且未加密。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/01/draw-and-guess-save-history/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">游戏逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/01/draw-and-guess-save-history/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1170,8 +419,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

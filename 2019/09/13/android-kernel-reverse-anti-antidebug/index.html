@@ -7,17 +7,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.xhyeax.com">
-  <title>Xhy&#39;s Blog</title>
+  <title>逆向修改安卓内核 x64 过TracerPID反调试 | Xhy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Blog of XhyEax, Share and make progress together.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Xhy&#39;s Blog">
-<meta property="og:url" content="http://blog.xhyeax.com/index.html">
+  <meta name="description" content="建议在git bash下操作本人解压kernel.gz时使用的不是命令行，导致没有看到输出信息gzip trailing garbage ignored，进而没有对这些数据进行处理，浪费了很多时间。 概述手动nop掉TracerPID反调试代码，当然比不上直接修改内核来的快。如果有内核源码以及环境，当然可以通过直接修改源码的方式生成boot.img。在无内核源码（或者还没配置安卓源码编译环境）的情">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向修改安卓内核 x64 过TracerPID反调试">
+<meta property="og:url" content="http://blog.xhyeax.com/2019/09/13/android-kernel-reverse-anti-antidebug/index.html">
 <meta property="og:site_name" content="Xhy&#39;s Blog">
-<meta property="og:description" content="Blog of XhyEax, Share and make progress together.">
+<meta property="og:description" content="建议在git bash下操作本人解压kernel.gz时使用的不是命令行，导致没有看到输出信息gzip trailing garbage ignored，进而没有对这些数据进行处理，浪费了很多时间。 概述手动nop掉TracerPID反调试代码，当然比不上直接修改内核来的快。如果有内核源码以及环境，当然可以通过直接修改源码的方式生成boot.img。在无内核源码（或者还没配置安卓源码编译环境）的情">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-12T16:42:11.329Z">
+<meta property="article:modified_time" content="2021-08-24T10:45:22.040Z">
 <meta property="article:author" content="Xhy">
-<meta property="article:tag" content="XhyEax&#39;s Blog">
+<meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Xhy&#39;s Blog" type="application/atom+xml">
@@ -164,23 +166,21 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-gradle-module-build-order-error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-android-kernel-reverse-anti-antidebug" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/01/gradle-module-build-order-error/">Gradle app模块构建顺序不符合预期</a>
+    <h1 class="article-title" itemprop="name">
+      逆向修改安卓内核 x64 过TracerPID反调试
     </h1>
   
 
 
         
-        <a href="/2021/09/01/gradle-module-build-order-error/" class="archive-article-date">
-  	<time datetime="2021-08-31T17:40:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-01</time>
+        <a href="/2019/09/13/android-kernel-reverse-anti-antidebug/" class="archive-article-date">
+  	<time datetime="2019-09-12T16:42:11.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-13</time>
 </a>
         
       </header>
@@ -188,128 +188,64 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 
       
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p>使用<code>Gradle</code>构建安卓项目，第一次构建时报错：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Task :app:buildCMakeDebug FAILED</span><br><span class="line">C/C++: ninja: error: missing and no known rule to make it</span><br></pre></td></tr></table></figure>
+    <h2 id="建议在git-bash下操作"><a href="#建议在git-bash下操作" class="headerlink" title="建议在git bash下操作"></a>建议在git bash下操作</h2><p>本人解压<code>kernel.gz</code>时使用的不是命令行，导致没有看到输出信息<code>gzip trailing garbage ignored</code>，进而没有对这些数据进行处理，浪费了很多时间。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>手动nop掉TracerPID反调试代码，当然比不上直接修改内核来的快。<br>如果有内核源码以及环境，当然可以通过直接修改源码的方式生成<code>boot.img</code>。<br>在无内核源码（或者还没配置安卓源码编译环境）的情况下则只能通过逆向来修改内核。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p><code>Redmi Note 3</code>, <code>arm64</code>, <code>cm12.1</code></p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="1-找到并导出boot-img"><a href="#1-找到并导出boot-img" class="headerlink" title="1. 找到并导出boot.img"></a>1. 找到并导出boot.img</h3><p>进入<code>adb shell</code>并执行su命令获取root权限（platform下文件夹可能会有所不同，即可能不是mtk-msdc.0）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /dev/block/platform/mtk-msdc.0/by-name</span><br><span class="line">ls -al</span><br></pre></td></tr></table></figure>
+<p>根据输出信息<code>boot -&gt; /dev/block/mmcblk0p7</code>得知boot对应该<code>mmcblk0p7</code><br>dd大法导出该文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/block/mmcblk0p7 of=/data/local/boot.img</span><br><span class="line">adb pull /data/local/boot.img boot.img</span><br></pre></td></tr></table></figure>
+<h3 id="2-解包boot-img以及内核"><a href="#2-解包boot-img以及内核" class="headerlink" title="2. 解包boot.img以及内核"></a>2. 解包boot.img以及内核</h3><p>此处使用的是<code>bootimg</code>工具（<a target="_blank" rel="noopener" href="https://github.com/XhyEax/android_bootimg">下载地址</a>），创建一个临时文件夹，执行<code>./bootimg.exe --unpack-bootimg .\boot.img</code>，再解压<code>kernel.gz</code>得到内核文件<br>强烈建议在<code>git bash</code>下使用<code>gzip -d</code>解压，这样才能查看具体的输出信息<br>输出<code>gzip trailing garbage ignored</code>（尾部垃圾被忽略处理）<br>gzip认为这是尾部垃圾，实际上却是必要的数据，不考虑的话可能会导致无限重启。</p>
+<h4 id="收集尾部数据"><a href="#收集尾部数据" class="headerlink" title="收集尾部数据"></a>收集尾部数据</h4><p>解压<code>kernel.gz</code>后重新压缩内核文件，得到没有尾部数据的真实<code>kernel.gz</code>。<br>再通过<code>010Editor</code>在原<code>kernel.gz</code>中，查找真实<code>kernel.gz</code>文件尾（一般四个字节就只有一个结果了），定位到尾部这段数据，保存下来</p>
+<h3 id="3-使用IDA64反编译"><a href="#3-使用IDA64反编译" class="headerlink" title="3. 使用IDA64反编译"></a>3. 使用IDA64反编译</h3><p><code>processor type</code>选择<code>ARM Little-endian</code><br>弹出来一个提示框，点击确定，然后输入<code>ROM start address</code>和<code>Loading address</code>为内核基址:<code>0xffffffc000080000</code></p>
+<h3 id="4-修改内核文件"><a href="#4-修改内核文件" class="headerlink" title="4.修改内核文件"></a>4.修改内核文件</h3><h4 id="方法1-修改TracerPid的格式字符串"><a href="#方法1-修改TracerPid的格式字符串" class="headerlink" title="方法1 修改TracerPid的格式字符串"></a>方法1 修改TracerPid的格式字符串</h4><p>（该思路来自<a target="_blank" rel="noopener" href="https://www.xmsec.cc/re-modify-kernel-bypass-antidebug/">逆向修改内核，绕过TracerPID反调试</a>）<br>使用<code>010Editor</code>打开内核文件，搜索<code>TracerPid</code>，修改<code>TracerPid</code>后的第一个 <code>&quot;%d&quot;</code><br>改成  <code>&quot;0\t&quot;</code> (<code>30 09</code>) 或 <code>&quot;0\n&quot;</code> (<code>30 10</code>) 或 <code>&quot;00&quot;</code> (十六进制<code>30 30</code>)</p>
+<h4 id="方法2-修改proc-pid-status函数指令"><a href="#方法2-修改proc-pid-status函数指令" class="headerlink" title="方法2 修改proc_pid_status函数指令"></a>方法2 修改proc_pid_status函数指令</h4><h5 id="查看函数地址"><a href="#查看函数地址" class="headerlink" title="查看函数地址"></a>查看函数地址</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo 0 &gt; /proc/sys/kernel/kptr_restrict</span><br><span class="line">cat /proc/kallsyms |grep proc_pid_status</span><br><span class="line">cat /proc/kallsyms |grep __task_pid_nr_ns</span><br></pre></td></tr></table></figure>
+<p>输出为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffffffc0001f7aa8 T proc_pid_status</span><br><span class="line">ffffffc0000bb1f0 T __task_pid_nr_ns</span><br></pre></td></tr></table></figure>
+<h5 id="定位函数及patch"><a href="#定位函数及patch" class="headerlink" title="定位函数及patch"></a>定位函数及patch</h5><p>在ida中按g跳转到<code>ffffffc0000bb1f0</code>(<code>task_pid_nr_ns</code>)，按p解析函数<br>再按g跳转到<code>ffffffc0001f7aa8</code>(<code>proc_pid_status</code>)，按p解析函数<br>然后回到<code>ffffffc0000bb1f0</code>(<code>task_pid_nr_ns</code>)，按x查看交叉引用，发现已经有<code>ffffffc0001f7aa8</code>(<code>proc_pid_status</code>)调用的信息了<br>双击进入，在IDA View视图中定位到关键指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MOV W1, W25</span><br><span class="line">MOV X2, X19</span><br><span class="line">BL sub_FFFFFFC0000BB1F0</span><br><span class="line">MOV W25, W0</span><br></pre></td></tr></table></figure>
+<p>修改往前第两条和后一条的mov指令（可使用KeyPatch插件），结果为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MOV W1, #0</span><br><span class="line">MOV X2, X19</span><br><span class="line">BL sub_FFFFFFC0000BB1F0</span><br><span class="line">MOV W25, #0</span><br></pre></td></tr></table></figure>
+<p>对应机器码为<code>01 00 80 52</code>和<code>19 00 80 52</code></p>
+<h3 id="5-gzip压缩内核"><a href="#5-gzip压缩内核" class="headerlink" title="5. gzip压缩内核"></a>5. gzip压缩内核</h3><p>在<code>git bash</code>下使用<code>gzip</code>压缩修改后的内核文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -n -f -9 kernel</span><br></pre></td></tr></table></figure>
+<h3 id="6-重打包boot-img"><a href="#6-重打包boot-img" class="headerlink" title="6. 重打包boot.img"></a>6. 重打包boot.img</h3><h4 id="方法1-使用bootimg打包（推荐）"><a href="#方法1-使用bootimg打包（推荐）" class="headerlink" title="方法1 使用bootimg打包（推荐）"></a>方法1 使用bootimg打包（推荐）</h4><p>使用<code>010Editor</code>编辑刚刚生成的<code>kernel.gz</code>，添加上之前获取的尾部数据<br>然后执行<code>./bootimg.exe --repack-bootimg</code>得到的<code>boot-new.img</code>文件，刷入即可</p>
+<h4 id="方法2-手动写入boot-img"><a href="#方法2-手动写入boot-img" class="headerlink" title="方法2 手动写入boot.img"></a>方法2 手动写入boot.img</h4><p>使用<code>010Editor</code>分别打开<code>kernel.gz</code>和<code>boot.img</code>，搜索1F 8B 08 00，定位到内核gzip位置（一般是0x800，不确定的话可以打开原本<code>kernel.gz</code>对比）</p>
+<h4 id="压缩后大小-lt-真实kernel-gz时"><a href="#压缩后大小-lt-真实kernel-gz时" class="headerlink" title="压缩后大小&lt;=真实kernel.gz时"></a>压缩后大小&lt;=真实kernel.gz时</h4><p>按下<code>insert</code>键，将010改为<code>overwrite</code>（右下角有提示）<br>然后把<code>kernel.gz</code>的内容复制到<code>boot.img</code>的相应位置，保存即可<br>（根据引用文章所说，小于的话可以直接不考虑后面的字节）</p>
+<h4 id="压缩后大小-gt-真实kernel-gz时"><a href="#压缩后大小-gt-真实kernel-gz时" class="headerlink" title="压缩后大小&gt;真实kernel.gz时"></a>压缩后大小&gt;真实kernel.gz时</h4><p>按下<code>insert</code>键，将010改为<code>insert</code>（右下角有提示）<br>选定真实<code>kernel.gz</code>部分（即不包括之前获取的尾部数据）<br>然后把<code>kernel.gz</code>的内容复制到<code>boot.img</code>的相应位置，保存即可</p>
+<h3 id="6-使用fastboot刷入"><a href="#6-使用fastboot刷入" class="headerlink" title="6. 使用fastboot刷入"></a>6. 使用fastboot刷入</h3><p>使用<code>adb reboot bootloader</code>重启到fastboot<br>然后执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fastboot flash boot boot.img</span><br><span class="line">fastboot reboot</span><br></pre></td></tr></table></figure>
+<p>如果成功的话就直接正常开机了，失败的话看看是不是修改错了内核文件的内容，从原内核开始修改，再次尝试</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.xmsec.cc/re-modify-kernel-bypass-antidebug/">逆向修改内核，绕过TracerPID反调试</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Druke/article/details/80502571">逆向修改MIUI（X64）内核，反制TracerPID反调试踩坑指南</a></p>
 
-<p>
-        
 
-          <a class="article-more-a" href="/2021/09/01/gradle-module-build-order-error/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
       
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/01/gradle-module-build-order-error/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"></i>感谢支持</i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-android-arm-plt-hook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/30/android-arm-plt-hook/">简易Android ARM&amp;ARM64 GOT Hook (二)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/30/android-arm-plt-hook/" class="archive-article-date">
-  	<time datetime="2021-08-30T02:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前文<a href="https://blog.xhyeax.com/2021/08/23/android-arm-got-hook/">简易Android ARM&amp;ARM64 GOT Hook (一)</a>，基于链接视图，解析section查找GOT表偏移值，无法应对section被处理过的情况（如加固）。</p>
-<p>本文基于ELF的执行视图(<code>Execution View</code>)，讨论<code>Android</code> <code>ARM&amp;ARM64</code>架构的<code>GOT/PLT Hook</code>（仍以Hook公共库<code>libc.so</code>的<code>getpid</code>函数为例）。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/30/android-arm-plt-hook/#more">查看更多 >></a>
-        
-    
-    
-
       
     </div>
     <div class="article-info article-info-index">
@@ -329,16 +265,84 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/30/android-arm-plt-hook/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.xhyeax.com/2019/09/13/android-kernel-reverse-anti-antidebug/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/09/13/android-source-mod-anti-antidebug/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          修改安卓内核源码 过State TracerPID反调试
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/02/android-studio-import-so/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android Studio 导入so</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -353,793 +357,32 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-why-linux-rm-dirfile-need-x" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/25/why-linux-rm-dirfile-need-x/">为什么Linux删除文件需要文件夹的可执行权限</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/25/why-linux-rm-dirfile-need-x/" class="archive-article-date">
-  	<time datetime="2021-08-25T03:01:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在Linux系统中，需要对文件所在目录有读写权限和可执行权限，才可以删除文件。读写权限很好理解，因为需要读取和修改文件夹内容信息。而可执行权限感觉有点奇怪，谷歌+分析内核源码，得到答案。</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>注意：需要使用普通用户进行以下操作</p>
-<p>首先使用<code>mkdir</code>创建一个目录，查看其权限，为<code>drwxr-xr-x</code>(755)<br>然后在该目录下创建文件，查看权限为<code>-rw-r--r--</code>(644)<br>可以看到文件夹和文件的默认权限是不同的，文件夹具有可执行权限</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/25/why-linux-rm-dirfile-need-x/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/25/why-linux-rm-dirfile-need-x/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E8%AE%AE%E5%9C%A8git-bash%E4%B8%8B%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">建议在git bash下操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%89%BE%E5%88%B0%E5%B9%B6%E5%AF%BC%E5%87%BAboot-img"><span class="toc-number">4.1.</span> <span class="toc-text">1. 找到并导出boot.img</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%A7%A3%E5%8C%85boot-img%E4%BB%A5%E5%8F%8A%E5%86%85%E6%A0%B8"><span class="toc-number">4.2.</span> <span class="toc-text">2. 解包boot.img以及内核</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B6%E9%9B%86%E5%B0%BE%E9%83%A8%E6%95%B0%E6%8D%AE"><span class="toc-number">4.2.1.</span> <span class="toc-text">收集尾部数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8IDA64%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-number">4.3.</span> <span class="toc-text">3. 使用IDA64反编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BF%AE%E6%94%B9%E5%86%85%E6%A0%B8%E6%96%87%E4%BB%B6"><span class="toc-number">4.4.</span> <span class="toc-text">4.修改内核文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%951-%E4%BF%AE%E6%94%B9TracerPid%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">4.4.1.</span> <span class="toc-text">方法1 修改TracerPid的格式字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%952-%E4%BF%AE%E6%94%B9proc-pid-status%E5%87%BD%E6%95%B0%E6%8C%87%E4%BB%A4"><span class="toc-number">4.4.2.</span> <span class="toc-text">方法2 修改proc_pid_status函数指令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80"><span class="toc-number">4.4.2.1.</span> <span class="toc-text">查看函数地址</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E5%87%BD%E6%95%B0%E5%8F%8Apatch"><span class="toc-number">4.4.2.2.</span> <span class="toc-text">定位函数及patch</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-gzip%E5%8E%8B%E7%BC%A9%E5%86%85%E6%A0%B8"><span class="toc-number">4.5.</span> <span class="toc-text">5. gzip压缩内核</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E9%87%8D%E6%89%93%E5%8C%85boot-img"><span class="toc-number">4.6.</span> <span class="toc-text">6. 重打包boot.img</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%951-%E4%BD%BF%E7%94%A8bootimg%E6%89%93%E5%8C%85%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">4.6.1.</span> <span class="toc-text">方法1 使用bootimg打包（推荐）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%952-%E6%89%8B%E5%8A%A8%E5%86%99%E5%85%A5boot-img"><span class="toc-number">4.6.2.</span> <span class="toc-text">方法2 手动写入boot.img</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%90%8E%E5%A4%A7%E5%B0%8F-lt-%E7%9C%9F%E5%AE%9Ekernel-gz%E6%97%B6"><span class="toc-number">4.6.3.</span> <span class="toc-text">压缩后大小&lt;&#x3D;真实kernel.gz时</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%90%8E%E5%A4%A7%E5%B0%8F-gt-%E7%9C%9F%E5%AE%9Ekernel-gz%E6%97%B6"><span class="toc-number">4.6.4.</span> <span class="toc-text">压缩后大小&gt;真实kernel.gz时</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E4%BD%BF%E7%94%A8fastboot%E5%88%B7%E5%85%A5"><span class="toc-number">4.7.</span> <span class="toc-text">6. 使用fastboot刷入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-ndk-warning-dt-flags" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/24/ndk-warning-dt-flags/">解决WARNING linker unsupported flags DT_FLAGS_1</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/24/ndk-warning-dt-flags/" class="archive-article-date">
-  	<time datetime="2021-08-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>使用最新版本的NDK编译<code>victim</code>，执行时提示<code>WARNING: linker: unsupported flags DT_FLAGS_1=0x8000001</code>(不影响运行)。</p>
-<h2 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h2><p>可使用<code>termux-elf-cleaner</code>替换<code>victim-patch-arm</code>的<code>DT_FLAGS_1</code>，从而去除<code>WARNING</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elf-cleaner.exe victim-patch-arm</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/24/ndk-warning-dt-flags/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/24/ndk-warning-dt-flags/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-android-arm-got-hook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/23/android-arm-got-hook/">简易Android ARM&amp;ARM64 GOT Hook (一)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/23/android-arm-got-hook/" class="archive-article-date">
-  	<time datetime="2021-08-23T02:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p><a href="https://blog.xhyeax.com/2021/08/30/android-arm-plt-hook/">简易Android ARM&amp;ARM64 GOT Hook (二)</a><br>基本思路为：基于执行视图，解析内存中的ELF，查找导入符号并替换函数地址</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本文以Hook公共库<code>libc.so</code>的<code>getpid</code>函数为例，基于ELF的链接视图(<code>Linking View</code>)，讨论<code>Android</code> <code>ARM&amp;ARM64</code>架构的<code>GOT/PLT Hook</code>。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>程序<code>加载</code>后，在执行之前，需要先进行<code>动态链接</code>，并进行<code>重定位</code>。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/23/android-arm-got-hook/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/23/android-arm-got-hook/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-arm-compile-without-as" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/22/arm-compile-without-as/">使用CMake交叉编译Android ARM程序</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/22/arm-compile-without-as/" class="archive-article-date">
-  	<time datetime="2021-08-22T07:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>脱离<code>Android Studio</code>，使用<code>CMake</code>交叉编译，生成<code>Android ARM</code>可执行文件及公共库。</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p><code>CMake 3.10.2</code>、<code>NDK 21.4.7075529</code>（从<code>Android Studio</code>的<code>SDK Manager</code>中下载）<br><code>ABI</code>:<code>armeabi-v7a</code></p>
-<h2 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h2><h3 id="可执行文件"><a href="#可执行文件" class="headerlink" title="可执行文件"></a>可执行文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.10.2)</span><br><span class="line"></span><br><span class="line">project(victim)</span><br><span class="line"></span><br><span class="line">add_executable(victim victim.cpp)</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/22/arm-compile-without-as/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/22/arm-compile-without-as/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-frida-no-root" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/06/frida-no-root/">Frida在无Root机器上的使用方案 (基于VirtualApp)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/06/frida-no-root/" class="archive-article-date">
-  	<time datetime="2021-08-06T06:03:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>大多数国产手机厂商出于安全考虑，禁止用户解锁BootLoader，因此也就无法通过Magisk获取Root权限。<br>本文基于<a target="_blank" rel="noopener" href="https://github.com/asLody/VirtualApp">VirtualApp框架</a>及<a target="_blank" rel="noopener" href="https://github.com/frida/frida">Frida-Gadget</a>，实现不修改apk使用Frida。</p>
-<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><h3 id="修改框架源码"><a href="#修改框架源码" class="headerlink" title="修改框架源码"></a>修改框架源码</h3><p>阅读<code>VirtualApp</code>源码可知，在<a target="_blank" rel="noopener" href="https://github.com/asLody/VirtualApp/blob/bd6f03cfd7cbf3ad63ec6198777a102c18112c2d/VirtualApp/lib/src/main/jni/Foundation/IOUniformer.cpp"><code>lib/src/main/jni/Foundation/IOUniformer.cpp</code></a>中hook了<code>dlopen</code>，并实现了<code>onSoLoaded</code>函数，可在该函数中通过传入的<code>filename</code>获取加载的动态库路径。</p>
-<p>由此，可以在<code>libart.so</code>加载后，手动调用<code>dlopen</code>加载<code>Frida-Gadget</code>（将arm版本的so文件及配置文件添加到<code>lib\src\main\jniLibs\armeabi-v7a</code>）。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/06/frida-no-root/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/06/frida-no-root/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-qq-8817-unrevoke-and-infinite-flashpic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/">QQ 8.8.17 防撤回、无限打开闪照</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/" class="archive-article-date">
-  	<time datetime="2021-08-04T00:33:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>之前写过一篇<a href="https://blog.xhyeax.com/2019/09/18/qq-813-unrevoke-module-develop/">QQ8.1.3防撤回原理</a>，每次更新后，都需要适配被混淆的类名。</p>
-<p>今天更新了最新版QQ（<code>8.8.17</code>），发现使用到的类名都未被混淆，不过包结构有了一定变化（可能是重构了？），需要重新适配。</p>
-<p>于是尝试使用<code>objection</code>分析撤回提示的实现，并编写<code>Xposed</code>模块。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-arm-thumb-pc-address" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/03/arm-thumb-pc-address/">ARM Thumb状态下 相对pc寄存器寻址问题</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/03/arm-thumb-pc-address/" class="archive-article-date">
-  	<time datetime="2021-08-02T19:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在一篇文章（<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1486586-1-1.html">实现简易安卓inlinehook</a>）中，Thumb状态下，相对寄存器pc寻址，结果不符合预期。谷歌后找到原因。</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/arm-address-not-4-byte.png"><br>问题指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B3AFB212 ldr r2,[pc,#2]            #预期R2=[pc+4+2=B3AFB218]，结果变为[B3AFB216]</span><br><span class="line">B3AFB216 mov r0, r0                #将pc赋值，替换为 mov r0, r0 方便测试</span><br><span class="line">B3AFB218 xx xx xx xx               #跳回地址，以78563412为例（小端模式）</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/03/arm-thumb-pc-address/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/03/arm-thumb-pc-address/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-draw-and-guess-save-history" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/01/draw-and-guess-save-history/">基于Mono注入 保存你画我猜历史房间数据</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/01/draw-and-guess-save-history/" class="archive-article-date">
-  	<time datetime="2021-07-31T20:06:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>最近在Steam购买了你画我猜(<code>Draw &amp; Guess</code>)，游戏并不支持保存最近房间代码，以及玩家id。<br>由于众所周知的服务器原因（土豆做的），经常有人掉线或闪退（也可能是自己），重连后无法返回之前的房间。</p>
-<p>于是考虑使用Mono注入技术，实现历史房间数据的保存。</p>
-<h2 id="逆向分析过程"><a href="#逆向分析过程" class="headerlink" title="逆向分析过程"></a>逆向分析过程</h2><h3 id="文件结构分析"><a href="#文件结构分析" class="headerlink" title="文件结构分析"></a>文件结构分析</h3><p>查看游戏目录结构，发现是使用Unity编写的Mono平台游戏，关键dll文件位于<code>..\steamapps\common\Draw &amp; Guess\Draw&amp;Guess_Data\Managed</code>，并且未加密。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/01/draw-and-guess-save-history/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">游戏逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/01/draw-and-guess-save-history/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1170,8 +413,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

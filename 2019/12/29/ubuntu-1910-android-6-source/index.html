@@ -7,17 +7,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.xhyeax.com">
-  <title>Xhy&#39;s Blog</title>
+  <title>Ubuntu 19.10 编译安卓6.0.0_r1源码 | Xhy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Blog of XhyEax, Share and make progress together.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Xhy&#39;s Blog">
-<meta property="og:url" content="http://blog.xhyeax.com/index.html">
+  <meta name="description" content="提示[2020&#x2F;04&#x2F;16更新]建议使用docker进行编译，省心省力见：在WSL2中使用docker编译安卓源码 概述之前编译了AOSP 5.1.1源码，没有写文章记录。这次记录一下编译安卓6.0.0_r1的过程，流程大致跟编译5.1.1一样 步骤配置软件源sudo vim &#x2F;etc&#x2F;apt&#x2F;sources.list 123456789101112deb https:&#x2F;&#x2F;mirrors.tuna">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 19.10 编译安卓6.0.0_r1源码">
+<meta property="og:url" content="http://blog.xhyeax.com/2019/12/29/ubuntu-1910-android-6-source/index.html">
 <meta property="og:site_name" content="Xhy&#39;s Blog">
-<meta property="og:description" content="Blog of XhyEax, Share and make progress together.">
+<meta property="og:description" content="提示[2020&#x2F;04&#x2F;16更新]建议使用docker进行编译，省心省力见：在WSL2中使用docker编译安卓源码 概述之前编译了AOSP 5.1.1源码，没有写文章记录。这次记录一下编译安卓6.0.0_r1的过程，流程大致跟编译5.1.1一样 步骤配置软件源sudo vim &#x2F;etc&#x2F;apt&#x2F;sources.list 123456789101112deb https:&#x2F;&#x2F;mirrors.tuna">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-29T02:57:59.429Z">
+<meta property="article:modified_time" content="2021-08-01T03:47:14.161Z">
 <meta property="article:author" content="Xhy">
-<meta property="article:tag" content="XhyEax&#39;s Blog">
+<meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Xhy&#39;s Blog" type="application/atom+xml">
@@ -164,23 +166,21 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-gradle-module-build-order-error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-ubuntu-1910-android-6-source" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/01/gradle-module-build-order-error/">Gradle app模块构建顺序不符合预期</a>
+    <h1 class="article-title" itemprop="name">
+      Ubuntu 19.10 编译安卓6.0.0_r1源码
     </h1>
   
 
 
         
-        <a href="/2021/09/01/gradle-module-build-order-error/" class="archive-article-date">
-  	<time datetime="2021-08-31T17:40:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-01</time>
+        <a href="/2019/12/29/ubuntu-1910-android-6-source/" class="archive-article-date">
+  	<time datetime="2019-12-29T02:57:59.429Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
 </a>
         
       </header>
@@ -188,128 +188,65 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 
       
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p>使用<code>Gradle</code>构建安卓项目，第一次构建时报错：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Task :app:buildCMakeDebug FAILED</span><br><span class="line">C/C++: ninja: error: missing and no known rule to make it</span><br></pre></td></tr></table></figure>
+    <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>[2020/04/16更新]<br>建议使用<code>docker</code>进行编译，省心省力<br>见：<a href="https://blog.xhyeax.com/2020/04/16/aosp-docker/">在WSL2中使用docker编译安卓源码</a></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>之前编译了AOSP 5.1.1源码，没有写文章记录。这次记录一下编译安卓6.0.0_r1的过程，流程大致跟编译5.1.1一样</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="配置软件源"><a href="#配置软件源" class="headerlink" title="配置软件源"></a>配置软件源</h3><p><code>sudo vim /etc/apt/sources.list</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://archive.ubuntu.com/ubuntu/ trusty main universe restricted multiverse</span><br></pre></td></tr></table></figure>
+<h3 id="启动i386架构"><a href="#启动i386架构" class="headerlink" title="启动i386架构"></a>启动i386架构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --add-architecture i386</span><br></pre></td></tr></table></figure>
+<h3 id="更新软件源"><a href="#更新软件源" class="headerlink" title="更新软件源"></a>更新软件源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><h4 id="程序包"><a href="#程序包" class="headerlink" title="程序包"></a>程序包</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y git flex bison gperf build-essential libncurses5-dev:i386 \</span><br><span class="line">libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-dev g++-multilib \</span><br><span class="line">tofrodos python-markdown libxml2-utils xsltproc zlib1g-dev:i386 \</span><br><span class="line">dpkg-dev libsdl1.2-dev libesd0-dev \</span><br><span class="line">git-core gnupg flex bison gperf build-essential \</span><br><span class="line">zip curl zlib1g-dev gcc-multilib g++-multilib \</span><br><span class="line">libc6-dev-i386 \</span><br><span class="line">lib32ncurses5-dev x11proto-core-dev libx11-dev \</span><br><span class="line">lib32z-dev ccache \</span><br><span class="line">libgl1-mesa-dev libxml2-utils xsltproc unzip m4</span><br></pre></td></tr></table></figure>
+<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h4><p>官网查询得知，编译安卓5.x-6.0都是使用JDK7<br>下载地址： <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1AcnT-D9x8EE0Z6Jzuxgscw">https://pan.baidu.com/s/1AcnT-D9x8EE0Z6Jzuxgscw</a> 提取码: hqh5<br>将openJDK7解压到<code>/usr/lib/jvm</code>目录下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/lib/jvm</span><br><span class="line">tar xvf openjdk-1.7.0_121.tar.xz -C /usr/lib/jvm/</span><br></pre></td></tr></table></figure>
+<p>最终文件夹名为<code>/usr/lib/jvm/openjdk-1.7.0_121</code></p>
+<p>修改<code>/etc/profile</code>文件，在末尾添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jvm/openjdk-1.7.0_121</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib</span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>之后执行<code>source /etc/profile</code>，从而免重启使环境变量在当前bash环境下生效，<br>然后执行以下命令测试java是否正常：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">javac -version</span><br></pre></td></tr></table></figure>
+<h3 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h3><p>有两种选择，直接下载压缩包或者使用repo下载</p>
+<h4 id="下载压缩包"><a href="#下载压缩包" class="headerlink" title="下载压缩包"></a>下载压缩包</h4><p><a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1ngsZs">http://pan.baidu.com/s/1ngsZs</a></p>
+<h4 id="使用repo下载"><a href="#使用repo下载" class="headerlink" title="使用repo下载"></a>使用repo下载</h4><p>repo可使用中科大版本或清华版本<br><a target="_blank" rel="noopener" href="https://lug.ustc.edu.cn/wiki/mirrors/help/aosp">ustc - AOSP(Android) 镜像使用帮助</a><br><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/">tuna - AOSP(Android) 镜像使用帮助</a><br>以清华源为例<br><code>~/.bashrc</code>添加以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export REPO_URL=&#x27;https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/</span><br></pre></td></tr></table></figure>
+<p>再执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir aosp</span><br><span class="line">cd aosp</span><br><span class="line">## 创建工作文件夹，并初始化repo</span><br><span class="line">repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-6.0.0_r1 --depth=1</span><br><span class="line">## 指定深度和分支，只下载对应版本的代码，不下载commit记录</span><br><span class="line">repo sync</span><br><span class="line">## 同步源码树</span><br></pre></td></tr></table></figure>
+<h3 id="下载驱动文件"><a href="#下载驱动文件" class="headerlink" title="下载驱动文件"></a>下载驱动文件</h3><p>在<a target="_blank" rel="noopener" href="https://developers.google.com/android/drivers">官网</a>找到对应型号和版本的驱动，并解压到源码目录下<br>然后逐一运行解压出的脚本，读到第8条第e项之后输入<code>I ACCEPT</code>解压出驱动</p>
+<h3 id="编译前准备"><a href="#编译前准备" class="headerlink" title="编译前准备"></a>编译前准备</h3><h4 id="修改mk文件"><a href="#修改mk文件" class="headerlink" title="修改mk文件"></a>修改mk文件</h4><p>修改 <code>art/build/Android.common_build.mk</code>文件，定位到75行<br>将<br><code>ifneq ($(WITHOUT_HOST_CLANG),true)</code><br>改为<br><code>ifeq ($(WITHOUT_HOST_CLANG),false)</code></p>
+<h4 id="切换python版本"><a href="#切换python版本" class="headerlink" title="切换python版本"></a>切换<code>python</code>版本</h4><p>如果python默认版本为<code>python2</code>，则不需要进行这一步</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1</span><br><span class="line">sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2</span><br><span class="line">sudo update-alternatives --config python</span><br></pre></td></tr></table></figure>
+<p>选择<code>python2</code>的序号并回车</p>
+<h4 id="使用ccache"><a href="#使用ccache" class="headerlink" title="使用ccache"></a>使用ccache</h4><p>为提高编译效率，使用ccache加速编译<br>(1) 在<code>~/.bashrc</code>文件末尾添加：<code>export USE_CCACHE=1</code><br>(2) 在源码目录执行：<br><code>prebuilts/misc/linux-x86/ccache/ccache -M 100G</code><br>PS：据说<em>该设置会保存到CCACHE_DIR中，且该命令是长效的，不会因系统重启而失效。</em><br>但是可能因为其他原因失效，导致不使用ccache编译，所以建议每次编译前手动设置一下</p>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>执行<code>export LC_ALL=C</code><br>然后导入编译Android源码所需的环境:<br><code>source build/envsetup.sh</code><br>执行<code>lunch</code>选择编译目标<br><code>make -j26</code> 多线程编译，建议设置线程数为cpu核心数的2倍（<code>grep ^processor /proc/cpuinfo | wc -l</code>查看）</p>
+<p>耐心等待编译完成</p>
+<h3 id="刷入"><a href="#刷入" class="headerlink" title="刷入"></a>刷入</h3><p>在<code>out/target/product/型号</code>下找到生成的镜像，fastboot刷入即可</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://bbs.pediy.com/thread-254834.htm">Ubuntu 18.04.3 LTS 编译安卓6.0.0_r1</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41572450/article/details/90257995">E:Unable to locate package libssl-dev:i386</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34248258/article/details/86028896">ubuntu18.04无法安装libesd0-dev【学习笔记】</a></p>
 
-<p>
-        
 
-          <a class="article-more-a" href="/2021/09/01/gradle-module-build-order-error/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
       
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/01/gradle-module-build-order-error/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"></i>感谢支持</i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-android-arm-plt-hook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/30/android-arm-plt-hook/">简易Android ARM&amp;ARM64 GOT Hook (二)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/30/android-arm-plt-hook/" class="archive-article-date">
-  	<time datetime="2021-08-30T02:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前文<a href="https://blog.xhyeax.com/2021/08/23/android-arm-got-hook/">简易Android ARM&amp;ARM64 GOT Hook (一)</a>，基于链接视图，解析section查找GOT表偏移值，无法应对section被处理过的情况（如加固）。</p>
-<p>本文基于ELF的执行视图(<code>Execution View</code>)，讨论<code>Android</code> <code>ARM&amp;ARM64</code>架构的<code>GOT/PLT Hook</code>（仍以Hook公共库<code>libc.so</code>的<code>getpid</code>函数为例）。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/30/android-arm-plt-hook/#more">查看更多 >></a>
-        
-    
-    
-
       
     </div>
     <div class="article-info article-info-index">
@@ -329,16 +266,84 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/30/android-arm-plt-hook/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.xhyeax.com/2019/12/29/ubuntu-1910-android-6-source/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/01/29/52pojie-2020-red-packet/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          2020吾爱破解论坛春节红包前三题 Writeup
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/20/fix_error_log_qseecomd_aosp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">修复 AOSP QSEECOMD 错误日志</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -353,793 +358,32 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-why-linux-rm-dirfile-need-x" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/25/why-linux-rm-dirfile-need-x/">为什么Linux删除文件需要文件夹的可执行权限</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/25/why-linux-rm-dirfile-need-x/" class="archive-article-date">
-  	<time datetime="2021-08-25T03:01:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在Linux系统中，需要对文件所在目录有读写权限和可执行权限，才可以删除文件。读写权限很好理解，因为需要读取和修改文件夹内容信息。而可执行权限感觉有点奇怪，谷歌+分析内核源码，得到答案。</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>注意：需要使用普通用户进行以下操作</p>
-<p>首先使用<code>mkdir</code>创建一个目录，查看其权限，为<code>drwxr-xr-x</code>(755)<br>然后在该目录下创建文件，查看权限为<code>-rw-r--r--</code>(644)<br>可以看到文件夹和文件的默认权限是不同的，文件夹具有可执行权限</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/25/why-linux-rm-dirfile-need-x/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/25/why-linux-rm-dirfile-need-x/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA"><span class="toc-number">1.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%BD%AF%E4%BB%B6%E6%BA%90"><span class="toc-number">3.1.</span> <span class="toc-text">配置软件源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8i386%E6%9E%B6%E6%9E%84"><span class="toc-number">3.2.</span> <span class="toc-text">启动i386架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E8%BD%AF%E4%BB%B6%E6%BA%90"><span class="toc-number">3.3.</span> <span class="toc-text">更新软件源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-number">3.4.</span> <span class="toc-text">安装依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%8C%85"><span class="toc-number">3.4.1.</span> <span class="toc-text">程序包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JDK"><span class="toc-number">3.4.2.</span> <span class="toc-text">JDK</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%A0%81"><span class="toc-number">3.5.</span> <span class="toc-text">下载源码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="toc-number">3.5.1.</span> <span class="toc-text">下载压缩包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8repo%E4%B8%8B%E8%BD%BD"><span class="toc-number">3.5.2.</span> <span class="toc-text">使用repo下载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E9%A9%B1%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="toc-number">3.6.</span> <span class="toc-text">下载驱动文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-number">3.7.</span> <span class="toc-text">编译前准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9mk%E6%96%87%E4%BB%B6"><span class="toc-number">3.7.1.</span> <span class="toc-text">修改mk文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E6%8D%A2python%E7%89%88%E6%9C%AC"><span class="toc-number">3.7.2.</span> <span class="toc-text">切换python版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8ccache"><span class="toc-number">3.7.3.</span> <span class="toc-text">使用ccache</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-number">3.8.</span> <span class="toc-text">编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B7%E5%85%A5"><span class="toc-number">3.9.</span> <span class="toc-text">刷入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-ndk-warning-dt-flags" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/24/ndk-warning-dt-flags/">解决WARNING linker unsupported flags DT_FLAGS_1</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/24/ndk-warning-dt-flags/" class="archive-article-date">
-  	<time datetime="2021-08-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>使用最新版本的NDK编译<code>victim</code>，执行时提示<code>WARNING: linker: unsupported flags DT_FLAGS_1=0x8000001</code>(不影响运行)。</p>
-<h2 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h2><p>可使用<code>termux-elf-cleaner</code>替换<code>victim-patch-arm</code>的<code>DT_FLAGS_1</code>，从而去除<code>WARNING</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elf-cleaner.exe victim-patch-arm</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/24/ndk-warning-dt-flags/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/24/ndk-warning-dt-flags/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-android-arm-got-hook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/23/android-arm-got-hook/">简易Android ARM&amp;ARM64 GOT Hook (一)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/23/android-arm-got-hook/" class="archive-article-date">
-  	<time datetime="2021-08-23T02:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p><a href="https://blog.xhyeax.com/2021/08/30/android-arm-plt-hook/">简易Android ARM&amp;ARM64 GOT Hook (二)</a><br>基本思路为：基于执行视图，解析内存中的ELF，查找导入符号并替换函数地址</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本文以Hook公共库<code>libc.so</code>的<code>getpid</code>函数为例，基于ELF的链接视图(<code>Linking View</code>)，讨论<code>Android</code> <code>ARM&amp;ARM64</code>架构的<code>GOT/PLT Hook</code>。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>程序<code>加载</code>后，在执行之前，需要先进行<code>动态链接</code>，并进行<code>重定位</code>。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/23/android-arm-got-hook/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/23/android-arm-got-hook/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-arm-compile-without-as" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/22/arm-compile-without-as/">使用CMake交叉编译Android ARM程序</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/22/arm-compile-without-as/" class="archive-article-date">
-  	<time datetime="2021-08-22T07:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>脱离<code>Android Studio</code>，使用<code>CMake</code>交叉编译，生成<code>Android ARM</code>可执行文件及公共库。</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p><code>CMake 3.10.2</code>、<code>NDK 21.4.7075529</code>（从<code>Android Studio</code>的<code>SDK Manager</code>中下载）<br><code>ABI</code>:<code>armeabi-v7a</code></p>
-<h2 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h2><h3 id="可执行文件"><a href="#可执行文件" class="headerlink" title="可执行文件"></a>可执行文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.10.2)</span><br><span class="line"></span><br><span class="line">project(victim)</span><br><span class="line"></span><br><span class="line">add_executable(victim victim.cpp)</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/22/arm-compile-without-as/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/22/arm-compile-without-as/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-frida-no-root" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/06/frida-no-root/">Frida在无Root机器上的使用方案 (基于VirtualApp)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/06/frida-no-root/" class="archive-article-date">
-  	<time datetime="2021-08-06T06:03:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>大多数国产手机厂商出于安全考虑，禁止用户解锁BootLoader，因此也就无法通过Magisk获取Root权限。<br>本文基于<a target="_blank" rel="noopener" href="https://github.com/asLody/VirtualApp">VirtualApp框架</a>及<a target="_blank" rel="noopener" href="https://github.com/frida/frida">Frida-Gadget</a>，实现不修改apk使用Frida。</p>
-<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><h3 id="修改框架源码"><a href="#修改框架源码" class="headerlink" title="修改框架源码"></a>修改框架源码</h3><p>阅读<code>VirtualApp</code>源码可知，在<a target="_blank" rel="noopener" href="https://github.com/asLody/VirtualApp/blob/bd6f03cfd7cbf3ad63ec6198777a102c18112c2d/VirtualApp/lib/src/main/jni/Foundation/IOUniformer.cpp"><code>lib/src/main/jni/Foundation/IOUniformer.cpp</code></a>中hook了<code>dlopen</code>，并实现了<code>onSoLoaded</code>函数，可在该函数中通过传入的<code>filename</code>获取加载的动态库路径。</p>
-<p>由此，可以在<code>libart.so</code>加载后，手动调用<code>dlopen</code>加载<code>Frida-Gadget</code>（将arm版本的so文件及配置文件添加到<code>lib\src\main\jniLibs\armeabi-v7a</code>）。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/06/frida-no-root/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/06/frida-no-root/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-qq-8817-unrevoke-and-infinite-flashpic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/">QQ 8.8.17 防撤回、无限打开闪照</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/" class="archive-article-date">
-  	<time datetime="2021-08-04T00:33:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>之前写过一篇<a href="https://blog.xhyeax.com/2019/09/18/qq-813-unrevoke-module-develop/">QQ8.1.3防撤回原理</a>，每次更新后，都需要适配被混淆的类名。</p>
-<p>今天更新了最新版QQ（<code>8.8.17</code>），发现使用到的类名都未被混淆，不过包结构有了一定变化（可能是重构了？），需要重新适配。</p>
-<p>于是尝试使用<code>objection</code>分析撤回提示的实现，并编写<code>Xposed</code>模块。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-arm-thumb-pc-address" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/03/arm-thumb-pc-address/">ARM Thumb状态下 相对pc寄存器寻址问题</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/03/arm-thumb-pc-address/" class="archive-article-date">
-  	<time datetime="2021-08-02T19:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在一篇文章（<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1486586-1-1.html">实现简易安卓inlinehook</a>）中，Thumb状态下，相对寄存器pc寻址，结果不符合预期。谷歌后找到原因。</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/arm-address-not-4-byte.png"><br>问题指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B3AFB212 ldr r2,[pc,#2]            #预期R2=[pc+4+2=B3AFB218]，结果变为[B3AFB216]</span><br><span class="line">B3AFB216 mov r0, r0                #将pc赋值，替换为 mov r0, r0 方便测试</span><br><span class="line">B3AFB218 xx xx xx xx               #跳回地址，以78563412为例（小端模式）</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/03/arm-thumb-pc-address/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/03/arm-thumb-pc-address/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-draw-and-guess-save-history" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/01/draw-and-guess-save-history/">基于Mono注入 保存你画我猜历史房间数据</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/01/draw-and-guess-save-history/" class="archive-article-date">
-  	<time datetime="2021-07-31T20:06:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>最近在Steam购买了你画我猜(<code>Draw &amp; Guess</code>)，游戏并不支持保存最近房间代码，以及玩家id。<br>由于众所周知的服务器原因（土豆做的），经常有人掉线或闪退（也可能是自己），重连后无法返回之前的房间。</p>
-<p>于是考虑使用Mono注入技术，实现历史房间数据的保存。</p>
-<h2 id="逆向分析过程"><a href="#逆向分析过程" class="headerlink" title="逆向分析过程"></a>逆向分析过程</h2><h3 id="文件结构分析"><a href="#文件结构分析" class="headerlink" title="文件结构分析"></a>文件结构分析</h3><p>查看游戏目录结构，发现是使用Unity编写的Mono平台游戏，关键dll文件位于<code>..\steamapps\common\Draw &amp; Guess\Draw&amp;Guess_Data\Managed</code>，并且未加密。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/01/draw-and-guess-save-history/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">游戏逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/01/draw-and-guess-save-history/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1170,8 +414,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

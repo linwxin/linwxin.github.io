@@ -7,18 +7,39 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.xhyeax.com">
-  <title>Xhy&#39;s Blog</title>
+  <title>gslab2021 初赛 - 安卓客户端安全 | Xhy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Blog of XhyEax, Share and make progress together.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Xhy&#39;s Blog">
-<meta property="og:url" content="http://blog.xhyeax.com/index.html">
+  <meta name="description" content="最终效果成功实现RocketMouse直装破解版 app分析文件结构首先查看apk文件结构，发现是mono引擎的unity3d游戏，且Assembly-CSharp.dll已加密。并且存在assets&#x2F;filelist文件，测试发现是apk中各个文件的crc32校验值。 java层使用frida的spawn模式启动app，弹出对话框，点击对话框会退出进程，于是使用jeb打开该apk文件。发现com">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gslab2021 初赛 - 安卓客户端安全">
+<meta property="og:url" content="http://blog.xhyeax.com/2021/04/04/gslab2021-pre-android/index.html">
 <meta property="og:site_name" content="Xhy&#39;s Blog">
-<meta property="og:description" content="Blog of XhyEax, Share and make progress together.">
+<meta property="og:description" content="最终效果成功实现RocketMouse直装破解版 app分析文件结构首先查看apk文件结构，发现是mono引擎的unity3d游戏，且Assembly-CSharp.dll已加密。并且存在assets&#x2F;filelist文件，测试发现是apk中各个文件的crc32校验值。 java层使用frida的spawn模式启动app，弹出对话框，点击对话框会退出进程，于是使用jeb打开该apk文件。发现com">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-1.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-2.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-3.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-4.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-5.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-6.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-7.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-8.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-10.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-11.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-12.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-13.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-14.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-15.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-16.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-17.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-18.png">
+<meta property="og:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-19.png">
+<meta property="article:published_time" content="2021-04-04T13:28:32.366Z">
+<meta property="article:modified_time" content="2021-08-01T03:47:48.995Z">
 <meta property="article:author" content="Xhy">
-<meta property="article:tag" content="XhyEax&#39;s Blog">
+<meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-1.png">
   
     <link rel="alternative" href="/atom.xml" title="Xhy&#39;s Blog" type="application/atom+xml">
   
@@ -164,23 +185,21 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-gradle-module-build-order-error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-gslab2021-pre-android" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/01/gradle-module-build-order-error/">Gradle app模块构建顺序不符合预期</a>
+    <h1 class="article-title" itemprop="name">
+      gslab2021 初赛 - 安卓客户端安全
     </h1>
   
 
 
         
-        <a href="/2021/09/01/gradle-module-build-order-error/" class="archive-article-date">
-  	<time datetime="2021-08-31T17:40:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-01</time>
+        <a href="/2021/04/04/gslab2021-pre-android/" class="archive-article-date">
+  	<time datetime="2021-04-04T13:28:32.366Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-04</time>
 </a>
         
       </header>
@@ -188,128 +207,86 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 
       
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p>使用<code>Gradle</code>构建安卓项目，第一次构建时报错：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Task :app:buildCMakeDebug FAILED</span><br><span class="line">C/C++: ninja: error: missing and no known rule to make it</span><br></pre></td></tr></table></figure>
+    <h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p>成功实现RocketMouse直装破解版</p>
+<h3 id="app分析"><a href="#app分析" class="headerlink" title="app分析"></a>app分析</h3><h4 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h4><p>首先查看apk文件结构，发现是<code>mono</code>引擎的unity3d游戏，且<code>Assembly-CSharp.dll</code>已加密。<br>并且存在<code>assets/filelist</code>文件，测试发现是apk中各个文件的crc32校验值。</p>
+<h4 id="java层"><a href="#java层" class="headerlink" title="java层"></a>java层</h4><p>使用frida的spawn模式启动app，弹出对话框，点击对话框会退出进程，于是使用jeb打开该apk文件。<br>发现<code>com.tencent.games.sec2021.Sec2021MsgBox</code>的<code>onDismiss</code>函数存在退出代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDismiss</span><span class="params">(DialogInterface arg4)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">this</span>.m_str.contains(<span class="string">&quot;。&quot;</span>)) &#123;</span><br><span class="line">        System.exit(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Sec2021MsgBox.m_showed = <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>
-        
+<p>可使用frida hook该退出函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Java.available) &#123;</span><br><span class="line">    Java.perform(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        Java.use(<span class="string">&quot;java.lang.System&quot;</span>).exit</span><br><span class="line">            .overload(<span class="string">&#x27;int&#x27;</span>)</span><br><span class="line">            .implementation = <span class="function"><span class="keyword">function</span> (<span class="params">code</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          <a class="article-more-a" href="/2021/09/01/gradle-module-build-order-error/#more">查看更多 >></a>
-        
-    
-    
+<p>查看<code>show</code>函数的交叉引用，最终跟踪至<code>Sec2021IPC</code>的<code>onNativeEngineResponse</code>函数，推测native层会通过JNI来调用该函数，从而弹出对话框。</p>
+<h4 id="hook-native层退出函数"><a href="#hook-native层退出函数" class="headerlink" title="hook native层退出函数"></a>hook native层退出函数</h4><p>使用frida或ida附加后，除了java层弹出对话框，native层也会调用函数使程序退出。所以想要好好调试的话，得先找到这些函数。<br>使用IDA打开<code>libsec2021.so</code>，查看<code>kill</code>函数的交叉引用，发现有3个函数会调用它，如下图：<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-1.png"><br>分别查看对应函数的交叉引用，发现<code>55EC</code>没有被调用，<code>1F120</code>被多次调用，而<code>1F788</code>仅被一个函数(<code>1F6F0</code>)调用，向上寻找调用链找到<code>1FAA8</code>，该函数最终只被调用了5次，将其命名为<code>my_kill</code>。<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-2.png"><br>可以看到在kill之前调用了sleep函数，根据经验，<code>1F6F0</code>是退出函数的可能性更大一些。<br>使用frida hook<code>kill</code>函数，并打印堆栈查看：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">print_c_stack</span>(<span class="params">context, str_tag</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;=============================&quot;</span> + str_tag + <span class="string">&quot; Stack strat=======================&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(Thread.backtrace(context, Backtracer.ACCURATE).map(DebugSymbol.fromAddress).join(<span class="string">&#x27;\n&#x27;</span>));</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;=============================&quot;</span> + str_tag + <span class="string">&quot; Stack end  =======================&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hook_kill</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> addr = Module.findExportByName(<span class="string">&quot;libc.so&quot;</span>, <span class="string">&quot;kill&quot;</span>);</span><br><span class="line">    Interceptor.replace(addr, <span class="keyword">new</span> NativeCallback(<span class="function"><span class="keyword">function</span> (<span class="params">pid, sig</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;fake_kill() called!&quot;</span>);</span><br><span class="line">        print_c_stack(<span class="built_in">this</span>.context);</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;, <span class="string">&#x27;int&#x27;</span>, [<span class="string">&#x27;int&#x27;</span>, <span class="string">&#x27;int&#x27;</span>]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">=============================undefined Stack strat=======================</span><br><span class="line">0xb3624a38 libsec2021.so!0x1fa38</span><br><span class="line">0xb3624a38 libsec2021.so!0x1fa38</span><br><span class="line">=============================undefined Stack end  =======================</span><br></pre></td></tr></table></figure>
+<p>IDA定位到该偏移值，发现位于<code>1F788</code>函数中，且程序崩溃，使用<code>Android Studio</code>查看日志：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">backtrace:</span><br><span class="line">    #00 pc 00013ec8  /data/app/com.personal.rocketmouse-1/lib/arm/libsec2021.so</span><br><span class="line">    #01 pc 0001fa50  /data/app/com.personal.rocketmouse-1/lib/arm/libsec2021.so</span><br><span class="line">    #02 pc 00020920  /data/app/com.personal.rocketmouse-1/lib/arm/libsec2021.so</span><br><span class="line">    #03 pc 000060e0  /data/app/com.personal.rocketmouse-1/lib/arm/libsec2021.so</span><br><span class="line">    #04 pc 000224c7  /system/lib/libc.so (offset 0x1d000)</span><br></pre></td></tr></table></figure>
+<p>相关代码：<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-3.png"></p>
+<p>查看代码发现<code>13EC4</code>是一个内存拷贝函数，而它的目标地址是0x0，所以导致程序崩溃。由此可以确定<code>1F788</code>是退出函数，同时我们发现<code>1F120</code>被调用作为参数传入<code>13EC4</code>。使用frida hook看看<code>13EC4</code>的第二个参数是什么，具体思路为：<br>hook dlopen，然后在<code>libsec2021.so</code>加载后立即hook该函数，发现程序卡住，猜测有crc32校验，于是在<code>libmono</code>加载后再hook</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hook_dlopen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dlopenAddr = Module.findExportByName(<span class="literal">null</span>, <span class="string">&quot;dlopen&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (dlopenAddr == <span class="literal">null</span>) &#123;</span><br><span class="line">        dlopenAddr = Module.findExportByName(<span class="literal">null</span>, <span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Interceptor.attach(dlopenAddr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="function"><span class="keyword">function</span> (<span class="params">args</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span> (pathptr !== <span class="literal">undefined</span> &amp;&amp; pathptr != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">var</span> path = ptr(pathptr).readCString();</span><br><span class="line">                <span class="comment">// console.log(&quot;[dlopen]&quot;, path);</span></span><br><span class="line">                <span class="built_in">this</span>.can_hook_lib = <span class="literal">false</span>;</span><br><span class="line">                <span class="built_in">this</span>.can_hook_libmono = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span> (path.indexOf(<span class="string">&quot;libsec2021.so&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="built_in">this</span>.can_hook_lib = <span class="literal">true</span>;</span><br><span class="line">                &#125; <span class="keyword">if</span> (path.indexOf(<span class="string">&quot;libmono.so&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="built_in">this</span>.can_hook_libmono = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="function"><span class="keyword">function</span> (<span class="params">retval</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">this</span>.can_hook_lib) &#123;</span><br><span class="line">                <span class="comment">// hook_sec2021();</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">this</span>.can_hook_libmono) &#123;</span><br><span class="line">                hook_sec2021();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setImmediate(hook_dlopen);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hook_sec2021</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> libbase = Module.findBaseAddress(<span class="string">&quot;libsec2021.so&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> addr = libbase.add(<span class="number">0x13EC4</span>);</span><br><span class="line">    <span class="keyword">var</span> memcpy_ori = <span class="keyword">new</span> NativeFunction(addr, <span class="string">&#x27;pointer&#x27;</span>, [<span class="string">&#x27;int&#x27;</span>, <span class="string">&#x27;pointer&#x27;</span>]);</span><br><span class="line">    Interceptor.replace(addr, <span class="keyword">new</span> NativeCallback(<span class="function"><span class="keyword">function</span> (<span class="params">dst, src</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (dst == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> zero_replace_ptr = Memory.alloc(<span class="number">10</span>);</span><br><span class="line">            dst = zero_replace_ptr;</span><br><span class="line">            <span class="built_in">console</span>.log(Memory.readByteArray(src, <span class="number">0x10</span>));</span><br><span class="line">            <span class="keyword">return</span> dst;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> memcpy_ori(dst, src);</span><br><span class="line">    &#125;, <span class="string">&#x27;pointer&#x27;</span>, [<span class="string">&#x27;int&#x27;</span>, <span class="string">&#x27;pointer&#x27;</span>]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出<code>diediedie</code>，由此可以得知<code>1F120</code>是一个获取字符串的函数，将其命名为<code>getstring</code>，hook看看字符串：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> string_maps = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> key = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hook_getstring</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> libso_address = Module.findBaseAddress(<span class="string">&quot;libsec2021.so&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(libso_address);</span><br><span class="line">    <span class="keyword">var</span> addr = libso_address.add(<span class="number">0x1F120</span>);</span><br><span class="line"></span><br><span class="line">    Interceptor.attach(addr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="function"><span class="keyword">function</span> (<span class="params">args</span>) </span>&#123;</span><br><span class="line">            key = args[<span class="number">0</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="function"><span class="keyword">function</span> (<span class="params">retval</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> str = Memory.readUtf8String(ptr(retval));</span><br><span class="line">            <span class="keyword">if</span> (string_maps[key] == <span class="literal">null</span>) &#123;</span><br><span class="line">                string_maps[key] = str;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">&quot;getstring: &quot;</span>, key, str);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出一系列字符串，比如tcp端口检测，过签名校验类的检测，动态链接库的检测，apk签名、资源文件等。配合堆栈打印，可快速定位相关函数。当然，不需要一个一个分析，笔者是将退出函数nop掉从而实现破解。</p>
+<h5 id="对话框"><a href="#对话框" class="headerlink" title="对话框"></a>对话框</h5><p>如<code>0xa44 no heart beat</code>，打印堆栈可定位到<code>1574C</code>函数：<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-4.png"><br>查看<code>14FE0</code>，分析得知是在调用<code>onNativeEngineResponse</code>函数显示对话框：<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-5.png"></p>
+<h5 id="dll加载"><a href="#dll加载" class="headerlink" title="dll加载"></a>dll加载</h5><p>日志<code>0x338 Assembly-CSharp.dll</code>，可定位到<code>0x1D29C</code>函数（具体分析见下文）</p>
+<h4 id="native层"><a href="#native层" class="headerlink" title="native层"></a>native层</h4><p>使用IDA打开<code>libmono.so</code>，发现关键函数<code>mono_image_open_with_name</code>被加密。程序运行起来后，使用frida对其进行内存dump，发现该函数已被解密。修复so文件结构后，使用IDA查看：<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-6.png"><br>与正常的<code>libmono.dll</code>函数对比，发现区别在于第一条B指令，于是使用IDA下断点进行动态调试，执行到了<code>libsec2021.so</code>的<code>0x1D29C</code>函数。<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-7.png"><br>其中对文件头和文件名进行了判断，如果是<code>MZ</code>开头且路径不包含<code>Assembly-CSharp.dll</code>，则跳转至<code>0x1CF88</code>执行。否则初始化指针，并调用<code>0x1CF4C</code>中的解密算法，将<code>sec2021.png</code>的<code>0x410B</code>至末尾的数据解密，解密结果即为真正加载的<code>Assembly-CSharp.dll</code>。解密函数为<code>0x1D2A0</code>（查看调用发现也是解密so的函数）</p>
+<p><code>0x1CF88</code>位置：<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-8.png"><br>这里的<code>1FAA8</code>是之前分析的<code>my_kill</code>函数，2048即状态码，用来区分检测点。<br><code>18B00</code>函数初始化了一个数组，其中存有dll文件的crc32校验码，<code>18CEC</code>函数获取dll索引，并对其进行crc32校验（<code>F3B4</code>函数），正常则返回0。（<code>18CEC</code>函数部分内容如下，修改该函数返回值即可通过该检测点）<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-10.png"><br>查看crc32校验函数（<code>F3B4</code>）的交叉引用，可定位到<code>159A0</code>函数，修改其返回值为0即可绕过相关检测点。</p>
+<p>由于 <code>mono_image_open_from_data_with_name</code>函数的第一条指令会完成解密操作，所以可以hook下一条指令（此时已完成解密），当读取到真正的<code>Assembly-CSharp.dll</code>时（通过大小判断），将其dump出来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dump_memory</span>(<span class="params">base,size</span>) </span>&#123;</span><br><span class="line">    Java.perform(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> currentApplication = Java.use(<span class="string">&quot;android.app.ActivityThread&quot;</span>).currentApplication();</span><br><span class="line">        <span class="keyword">var</span> dir = currentApplication.getApplicationContext().getFilesDir().getPath();</span><br><span class="line">        <span class="keyword">var</span> file_path = dir + <span class="string">&quot;/dumpmemory.bin&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> file_handle = <span class="keyword">new</span> File(file_path, <span class="string">&quot;wb&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (file_handle &amp;&amp; file_handle != <span class="literal">null</span>) &#123;</span><br><span class="line">            Memory.protect(ptr(base),size, <span class="string">&#x27;rwx&#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> libso_buffer = ptr(base).readByteArray(size);</span><br><span class="line">            file_handle.write(libso_buffer);</span><br><span class="line">            file_handle.flush();</span><br><span class="line">            file_handle.close();</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;[dump]:&quot;</span>, file_path);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hook_mono</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> libbase = Module.findBaseAddress(<span class="string">&quot;libmono.so&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;libbase&quot;</span>, libbase);</span><br><span class="line">    <span class="keyword">var</span> addr = Module.findExportByName(<span class="string">&quot;libmono.so&quot;</span>, <span class="string">&quot;mono_image_open_from_data_with_name&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;mono_image_open_from_data_with_name&quot;</span>, addr);</span><br><span class="line"></span><br><span class="line">    Interceptor.attach(Module.findExportByName(<span class="string">&quot;libmono.so&quot;</span>, <span class="string">&quot;mono_image_open_from_data_with_name&quot;</span>).add(<span class="number">4</span>), &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="function"><span class="keyword">function</span> (<span class="params">args</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> data = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">var</span> data_len = args[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (data_len == <span class="number">0x2800</span>) &#123;</span><br><span class="line">               dump_memory(data, data_len);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;mono_image_open_from_data_with_name_ori() called!&quot;</span>, data, data_len);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="function"><span class="keyword">function</span> (<span class="params">retval</span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分析-dll"><a href="#分析-dll" class="headerlink" title="分析 dll"></a>分析 dll</h3><p>使用DnSpy打开该dll，注意到<code>MouseController</code>类的碰撞检测函数<code>OnTriggerEnter2D</code>中对碰撞物体进行了判断，如果不是金币则调用<code>HitByLaser</code>函数<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-11.png"><br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-12.png"><br>该函数将dead属性以及对话框赋值为true，所以只需要将赋值改为false即可实现无敌</p>
+<p>即将il语句<code>ldc.i4.1</code>改为<code>ldc.i4.0</code>（对应16进制的<code>17</code>改为<code>16</code>），如下图：</p>
+<p><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-13.png"><br>静态patch即可得到一个破解版的<code>Assembly-CSharp.dll</code></p>
+<h3 id="修改方法"><a href="#修改方法" class="headerlink" title="修改方法"></a>修改方法</h3><p>最终采用的是方法1（不需要额外文件）</p>
+<h4 id="法1-直装破解"><a href="#法1-直装破解" class="headerlink" title="法1 - 直装破解"></a>法1 - 直装破解</h4><p>替换<code>Assembly-CSharp.dll</code>文件为破解版，patch掉<code>libsec2021.so</code>的检测，使<code>mono_image_open_from_data_with_name</code>函数走正常流程，不对<code>Assembly-CSharp.dll</code>进行替换。</p>
+<p>修改方法：<br>修改<code>libsec2021.so</code>，将<code>1D0BC</code>偏移处<code>BEQ loc_1CF88</code>指令替换为<code>B loc_1CF88</code>，使得非<code>MZ</code>开头的dll才去执行解密函数。而因为我们替换了dll为破解版，所以是正常的文件头，从而不会执行解密函数。</p>
+<p><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-14.png"><br>修改crc32检测函数返回值：<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-15.png"><br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-16.png"><br>查找<code>my_kill</code>函数（<code>1FAA8</code>）的交叉引用，并将其nop<br>（测试发现nop以下两处即可）<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-17.png"><br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-18.png"></p>
+<h4 id="法2-frida-gadget"><a href="#法2-frida-gadget" class="headerlink" title="法2 - frida-gadget"></a>法2 - frida-gadget</h4><h5 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h5><p>使用<code>lief</code>为<code>libmono.so</code>添加<code>frida-gadget</code>依赖</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lief</span><br><span class="line"><span class="built_in">bin</span> = lief.parse(<span class="string">&quot;libmono.so&quot;</span>)</span><br><span class="line"><span class="built_in">bin</span>.add_library(<span class="string">&quot;libgadget.so&quot;</span>)</span><br><span class="line"><span class="built_in">bin</span>.write(<span class="string">&quot;libmono-patch.so&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>配置文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;interaction&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;script&quot;</span>,</span><br><span class="line">    <span class="string">&quot;path&quot;</span>: <span class="string">&quot;/data/data/com.personal.rocketmouse/files/script.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;on_change&quot;</span>: <span class="string">&quot;reload&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>释放脚本文件到 <code>/data/data/com.personal.rocketmouse/files/script.js</code>。（无root环境需要自己编写一个so文件，并将其编辑为<code>libgadget.so</code>的依赖，释放脚本文件）</p>
+<p>hook <code>mono_image_open_from_data_with_name</code>函数的下一条指令（此时已完成解密），当读取到真正的<code>Assembly-CSharp.dll</code>时（通过数据大小判断），修改<code>MouseController</code>的<code>HitByLaser</code>函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hook_mono</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> libbase = Module.findBaseAddress(<span class="string">&quot;libmono.so&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;libbase&quot;</span>, libbase);</span><br><span class="line">    <span class="keyword">var</span> addr = Module.findExportByName(<span class="string">&quot;libmono.so&quot;</span>, <span class="string">&quot;mono_image_open_from_data_with_name&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;mono_image_open_from_data_with_name&quot;</span>, addr);</span><br><span class="line"></span><br><span class="line">    Interceptor.attach(Module.findExportByName(<span class="string">&quot;libmono.so&quot;</span>, <span class="string">&quot;mono_image_open_from_data_with_name&quot;</span>).add(<span class="number">4</span>), &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="function"><span class="keyword">function</span> (<span class="params">args</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> data = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">var</span> data_len = args[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (data_len == <span class="number">0x2800</span>) &#123;</span><br><span class="line">                <span class="keyword">var</span> arr = [<span class="number">0x16</span>];</span><br><span class="line">                Memory.writeByteArray(data.add(<span class="number">0x9e4</span>), arr);</span><br><span class="line">                Memory.writeByteArray(data.add(<span class="number">0x9f5</span>), arr);</span><br><span class="line">                Memory.writeByteArray(data.add(<span class="number">0xa01</span>), arr);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;mono_image_open_from_data_with_name_ori() called!&quot;</span>, data, data_len);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="function"><span class="keyword">function</span> (<span class="params">retval</span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>去检测（<code>libsec2021.so</code>加载后立即hook）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hook_sec2021</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> libbase = Module.findBaseAddress(<span class="string">&quot;libsec2021.so&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> addr = libbase.add(<span class="number">0x1F6F0</span>);</span><br><span class="line">    Interceptor.replace(addr, <span class="keyword">new</span> NativeCallback(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;my_kill called&quot;</span>);</span><br><span class="line">    &#125;, <span class="string">&#x27;void&#x27;</span>, []));</span><br><span class="line"></span><br><span class="line">    addr = libbase.add(<span class="number">0x159A0</span>);</span><br><span class="line">    Interceptor.replace(addr, <span class="keyword">new</span> NativeCallback(<span class="function"><span class="keyword">function</span> (<span class="params">src</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// console.log(&quot;crc check&quot;);</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;, <span class="string">&#x27;int&#x27;</span>, [<span class="string">&#x27;pointer&#x27;</span>]));</span><br><span class="line"></span><br><span class="line">    addr = libbase.add(<span class="number">0x14FE0</span>);</span><br><span class="line">    Interceptor.replace(addr, <span class="keyword">new</span> NativeCallback(<span class="function"><span class="keyword">function</span> (<span class="params">jni, mode, cstr</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;show msg:&quot;</span>, Memory.readCString(cstr));</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;, <span class="string">&#x27;void&#x27;</span>, [<span class="string">&#x27;pointer&#x27;</span>, <span class="string">&#x27;int&#x27;</span>, <span class="string">&#x27;pointer&#x27;</span>]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="法3-dll注入"><a href="#法3-dll注入" class="headerlink" title="法3 - dll注入"></a>法3 - dll注入</h4><p>笔者还尝试了通过native hook的方式，使用mono api来进行dll注入。步骤如下：<br>将<code>UnityEngine.dll</code>和<code>Assembly-CSharp.dll</code>作为引用，编写一个注入dll，从而拦截<code>HitByLaser</code>方法（使用<a target="_blank" rel="noopener" href="https://github.com/Misaka-Mikoto-Tech/MonoHook">MonoHook</a>，其原理为替换函数地址）</p>
+<p>在native层hook <code>dlopen</code>函数，过掉<code>libsec2021.so</code>的检测，并获取<code>libmono</code>句柄，然后导出mono的api，在<code>Assembly-CSharp.dll</code>加载后，调用api加载注入dll（使用<code>VitualApp</code> 及 <code>Cydia Substrate</code>框架）</p>
+<h5 id="关键代码（native层）"><a href="#关键代码（native层）" class="headerlink" title="关键代码（native层）"></a>关键代码（native层）</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> *image = orig_mono_image_open_with_name(r.c_str(), file_size(path), need_copy, status, refonly, name);</span><br><span class="line"><span class="keyword">void</span> *assembly = mono_assembly_load_from_full(image, <span class="string">&quot;UNUSED&quot;</span>, status, refonly);</span><br><span class="line">image = mono_assembly_get_image(assembly);</span><br><span class="line"><span class="keyword">void</span> *pClass = mono_class_from_name(image, <span class="string">&quot;UnityHack&quot;</span>, <span class="string">&quot;HackLoad&quot;</span>);</span><br><span class="line">hookload_method = mono_class_get_method_from_name(pClass, <span class="string">&quot;HookLoad&quot;</span>, <span class="number">0</span>);</span><br><span class="line">mono_runtime_invoke(hookload_method, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure>
+<p>根据路径打开注入dll文件，并将其加载，之后根据类名和函数名获取相应函数，进行调用。</p>
+<h5 id="关键代码（C-层）"><a href="#关键代码（C-层）" class="headerlink" title="关键代码（C#层）"></a>关键代码（C#层）</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">HookLoad</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    Type tTarget = <span class="keyword">typeof</span>(MouseController);</span><br><span class="line">    Type tProxy = MethodBase.GetCurrentMethod().DeclaringType;</span><br><span class="line">    <span class="comment">//反射获取函数的`MethodInfo`</span></span><br><span class="line">    <span class="built_in">string</span> methodName = <span class="string">&quot;HitByLaser&quot;</span>;</span><br><span class="line">    MethodInfo miTarget = tTarget.GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);</span><br><span class="line">    MethodInfo miReplace = tProxy.GetMethod(methodName + <span class="string">&quot;Replace&quot;</span>);</span><br><span class="line">    MethodInfo miProxy = tProxy.GetMethod(methodName + <span class="string">&quot;Proxy&quot;</span>);</span><br><span class="line">    <span class="keyword">new</span> MethodHook(miTarget, miReplace, miProxy).Install();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">HitByLaserReplace</span>(<span class="params">Collider2D laserCollider</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">     UnityEngine.Debug.Log(<span class="string">&quot;HitByLaserReplace&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">HitByLaserProxy</span>(<span class="params">Collider2D laserCollider</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">     UnityEngine.Debug.Log(<span class="string">&quot;HitByLaserProxy&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="破解效果"><a href="#破解效果" class="headerlink" title="破解效果"></a>破解效果</h3><p>安装apk后，启动游戏即可。<br><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/gslab2021-pre-19.png"></p>
+
+
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/01/gradle-module-build-order-error/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"></i>感谢支持</i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-android-arm-plt-hook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/30/android-arm-plt-hook/">简易Android ARM&amp;ARM64 GOT Hook (二)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/30/android-arm-plt-hook/" class="archive-article-date">
-  	<time datetime="2021-08-30T02:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前文<a href="https://blog.xhyeax.com/2021/08/23/android-arm-got-hook/">简易Android ARM&amp;ARM64 GOT Hook (一)</a>，基于链接视图，解析section查找GOT表偏移值，无法应对section被处理过的情况（如加固）。</p>
-<p>本文基于ELF的执行视图(<code>Execution View</code>)，讨论<code>Android</code> <code>ARM&amp;ARM64</code>架构的<code>GOT/PLT Hook</code>（仍以Hook公共库<code>libc.so</code>的<code>getpid</code>函数为例）。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/30/android-arm-plt-hook/#more">查看更多 >></a>
-        
-    
-    
-
       
     </div>
     <div class="article-info article-info-index">
@@ -329,16 +306,84 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/30/android-arm-plt-hook/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.xhyeax.com/2021/04/04/gslab2021-pre-android/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2021/04/10/gslab2021-final-android/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          gslab2021 决赛 - 安卓客户端安全
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/03/01/android-9-set-hotpot-ip/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">安卓9 设置热点固定IP (Xposed)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -358,788 +403,14 @@ var _hmt = _hmt || [];
 
 
 
-
-  
-    <article id="post-why-linux-rm-dirfile-need-x" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/25/why-linux-rm-dirfile-need-x/">为什么Linux删除文件需要文件夹的可执行权限</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/25/why-linux-rm-dirfile-need-x/" class="archive-article-date">
-  	<time datetime="2021-08-25T03:01:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在Linux系统中，需要对文件所在目录有读写权限和可执行权限，才可以删除文件。读写权限很好理解，因为需要读取和修改文件夹内容信息。而可执行权限感觉有点奇怪，谷歌+分析内核源码，得到答案。</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>注意：需要使用普通用户进行以下操作</p>
-<p>首先使用<code>mkdir</code>创建一个目录，查看其权限，为<code>drwxr-xr-x</code>(755)<br>然后在该目录下创建文件，查看权限为<code>-rw-r--r--</code>(644)<br>可以看到文件夹和文件的默认权限是不同的，文件夹具有可执行权限</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/25/why-linux-rm-dirfile-need-x/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/25/why-linux-rm-dirfile-need-x/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ndk-warning-dt-flags" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/24/ndk-warning-dt-flags/">解决WARNING linker unsupported flags DT_FLAGS_1</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/24/ndk-warning-dt-flags/" class="archive-article-date">
-  	<time datetime="2021-08-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>使用最新版本的NDK编译<code>victim</code>，执行时提示<code>WARNING: linker: unsupported flags DT_FLAGS_1=0x8000001</code>(不影响运行)。</p>
-<h2 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h2><p>可使用<code>termux-elf-cleaner</code>替换<code>victim-patch-arm</code>的<code>DT_FLAGS_1</code>，从而去除<code>WARNING</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elf-cleaner.exe victim-patch-arm</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/24/ndk-warning-dt-flags/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/24/ndk-warning-dt-flags/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-android-arm-got-hook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/23/android-arm-got-hook/">简易Android ARM&amp;ARM64 GOT Hook (一)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/23/android-arm-got-hook/" class="archive-article-date">
-  	<time datetime="2021-08-23T02:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p><a href="https://blog.xhyeax.com/2021/08/30/android-arm-plt-hook/">简易Android ARM&amp;ARM64 GOT Hook (二)</a><br>基本思路为：基于执行视图，解析内存中的ELF，查找导入符号并替换函数地址</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本文以Hook公共库<code>libc.so</code>的<code>getpid</code>函数为例，基于ELF的链接视图(<code>Linking View</code>)，讨论<code>Android</code> <code>ARM&amp;ARM64</code>架构的<code>GOT/PLT Hook</code>。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>程序<code>加载</code>后，在执行之前，需要先进行<code>动态链接</code>，并进行<code>重定位</code>。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/23/android-arm-got-hook/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/23/android-arm-got-hook/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-arm-compile-without-as" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/22/arm-compile-without-as/">使用CMake交叉编译Android ARM程序</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/22/arm-compile-without-as/" class="archive-article-date">
-  	<time datetime="2021-08-22T07:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>脱离<code>Android Studio</code>，使用<code>CMake</code>交叉编译，生成<code>Android ARM</code>可执行文件及公共库。</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p><code>CMake 3.10.2</code>、<code>NDK 21.4.7075529</code>（从<code>Android Studio</code>的<code>SDK Manager</code>中下载）<br><code>ABI</code>:<code>armeabi-v7a</code></p>
-<h2 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h2><h3 id="可执行文件"><a href="#可执行文件" class="headerlink" title="可执行文件"></a>可执行文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.10.2)</span><br><span class="line"></span><br><span class="line">project(victim)</span><br><span class="line"></span><br><span class="line">add_executable(victim victim.cpp)</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/22/arm-compile-without-as/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/22/arm-compile-without-as/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-frida-no-root" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/06/frida-no-root/">Frida在无Root机器上的使用方案 (基于VirtualApp)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/06/frida-no-root/" class="archive-article-date">
-  	<time datetime="2021-08-06T06:03:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>大多数国产手机厂商出于安全考虑，禁止用户解锁BootLoader，因此也就无法通过Magisk获取Root权限。<br>本文基于<a target="_blank" rel="noopener" href="https://github.com/asLody/VirtualApp">VirtualApp框架</a>及<a target="_blank" rel="noopener" href="https://github.com/frida/frida">Frida-Gadget</a>，实现不修改apk使用Frida。</p>
-<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><h3 id="修改框架源码"><a href="#修改框架源码" class="headerlink" title="修改框架源码"></a>修改框架源码</h3><p>阅读<code>VirtualApp</code>源码可知，在<a target="_blank" rel="noopener" href="https://github.com/asLody/VirtualApp/blob/bd6f03cfd7cbf3ad63ec6198777a102c18112c2d/VirtualApp/lib/src/main/jni/Foundation/IOUniformer.cpp"><code>lib/src/main/jni/Foundation/IOUniformer.cpp</code></a>中hook了<code>dlopen</code>，并实现了<code>onSoLoaded</code>函数，可在该函数中通过传入的<code>filename</code>获取加载的动态库路径。</p>
-<p>由此，可以在<code>libart.so</code>加载后，手动调用<code>dlopen</code>加载<code>Frida-Gadget</code>（将arm版本的so文件及配置文件添加到<code>lib\src\main\jniLibs\armeabi-v7a</code>）。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/06/frida-no-root/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/06/frida-no-root/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-qq-8817-unrevoke-and-infinite-flashpic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/">QQ 8.8.17 防撤回、无限打开闪照</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/" class="archive-article-date">
-  	<time datetime="2021-08-04T00:33:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>之前写过一篇<a href="https://blog.xhyeax.com/2019/09/18/qq-813-unrevoke-module-develop/">QQ8.1.3防撤回原理</a>，每次更新后，都需要适配被混淆的类名。</p>
-<p>今天更新了最新版QQ（<code>8.8.17</code>），发现使用到的类名都未被混淆，不过包结构有了一定变化（可能是重构了？），需要重新适配。</p>
-<p>于是尝试使用<code>objection</code>分析撤回提示的实现，并编写<code>Xposed</code>模块。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-arm-thumb-pc-address" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/03/arm-thumb-pc-address/">ARM Thumb状态下 相对pc寄存器寻址问题</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/03/arm-thumb-pc-address/" class="archive-article-date">
-  	<time datetime="2021-08-02T19:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在一篇文章（<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1486586-1-1.html">实现简易安卓inlinehook</a>）中，Thumb状态下，相对寄存器pc寻址，结果不符合预期。谷歌后找到原因。</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/arm-address-not-4-byte.png"><br>问题指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B3AFB212 ldr r2,[pc,#2]            #预期R2=[pc+4+2=B3AFB218]，结果变为[B3AFB216]</span><br><span class="line">B3AFB216 mov r0, r0                #将pc赋值，替换为 mov r0, r0 方便测试</span><br><span class="line">B3AFB218 xx xx xx xx               #跳回地址，以78563412为例（小端模式）</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/03/arm-thumb-pc-address/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/03/arm-thumb-pc-address/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-draw-and-guess-save-history" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/01/draw-and-guess-save-history/">基于Mono注入 保存你画我猜历史房间数据</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/01/draw-and-guess-save-history/" class="archive-article-date">
-  	<time datetime="2021-07-31T20:06:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>最近在Steam购买了你画我猜(<code>Draw &amp; Guess</code>)，游戏并不支持保存最近房间代码，以及玩家id。<br>由于众所周知的服务器原因（土豆做的），经常有人掉线或闪退（也可能是自己），重连后无法返回之前的房间。</p>
-<p>于是考虑使用Mono注入技术，实现历史房间数据的保存。</p>
-<h2 id="逆向分析过程"><a href="#逆向分析过程" class="headerlink" title="逆向分析过程"></a>逆向分析过程</h2><h3 id="文件结构分析"><a href="#文件结构分析" class="headerlink" title="文件结构分析"></a>文件结构分析</h3><p>查看游戏目录结构，发现是使用Unity编写的Mono平台游戏，关键dll文件位于<code>..\steamapps\common\Draw &amp; Guess\Draw&amp;Guess_Data\Managed</code>，并且未加密。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/01/draw-and-guess-save-history/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">游戏逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/01/draw-and-guess-save-history/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1170,8 +441,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

